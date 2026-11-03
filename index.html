@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://tpasini.github.io/">
 <meta property="profile:first_name" content="Thomas">
 <meta property="profile:last_name" content="Pasini">
-<meta property="og:image" content="https://tpasini.github.io/assets/figures/ngc5903-meerkat-uhf.webp">
+<meta property="og:image" content="https://tpasini.github.io/assets/figures/ngc5903-meerkat-l.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Ccircle cx='17' cy='17' r='15' fill='%230B6B75'/%3E%3Ccircle cx='17' cy='17' r='9.5' fill='none' stroke='white' stroke-width='1.6' opacity='.8'/%3E%3Ccircle cx='17' cy='17' r='3' fill='white'/%3E%3C/svg%3E">
 <script type="application/ld+json">
@@ -68,6 +68,7 @@
   --s-xs:.78rem; --s-sm:.9rem; --s-base:1.06rem; --s-md:1.25rem; --s-lg:1.6rem; --s-xl:clamp(2.1rem,4.4vw,3.1rem);
 }
 @media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .fig img.plot{filter:invert(.9) hue-rotate(180deg) saturate(1.3)}
   :root:not([data-theme="light"]){
     --bg:#091015; --surface:#141B20; --ink:#E5EAED; --muted:#98A4AD; --rule:#26313A;
     --accent:#5FC3CB; --accent-soft:#16303A;
@@ -77,6 +78,7 @@
     color-scheme:dark;
   }
 }
+:root[data-theme="dark"] .fig img.plot{filter:invert(.9) hue-rotate(180deg) saturate(1.3)}
 :root[data-theme="dark"]{
   --bg:#091015; --surface:#141B20; --ink:#E5EAED; --muted:#98A4AD; --rule:#26313A;
   --accent:#5FC3CB; --accent-soft:#16303A;
@@ -133,7 +135,7 @@ p{margin:0}
 
 /* Hero */
 .hero{display:flex; flex-direction:column; gap:28px}
-.hero-title{font-family:var(--f-display); font-weight:700; font-size:clamp(1.9rem,3.3vw,2.7rem); line-height:1.08; letter-spacing:-.02em; margin:0; max-width:20ch; text-wrap:balance}
+.hero-title{font-family:var(--f-display); font-weight:700; font-size:clamp(2rem,3.6vw,3.1rem); line-height:1.08; letter-spacing:-.02em; margin:0; max-width:26ch; text-wrap:balance}
 .hero-title em{font-style:normal; color:var(--accent)}
 .lede{font-size:1.15rem; color:var(--muted); max-width:60ch}
 .figure{margin:0; display:flex; flex-direction:column; gap:10px}
@@ -221,16 +223,18 @@ footer{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); bor
 
 
 /* hero with figure */
-.hero-grid{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:clamp(24px,4vw,48px); align-items:center}
+.hero-grid{display:flex; flex-direction:column; gap:clamp(28px,4vw,44px)}
+.hero-text{max-width:1000px}
+.hero-text .lede{max-width:72ch}
 .hero-text{display:flex; flex-direction:column; gap:22px; min-width:0}
 .fig{margin:0; display:flex; flex-direction:column; gap:10px; min-width:0}
-.fig img{display:block; width:100%; max-width:100%; height:auto; border-radius:6px; border:1px solid var(--rule); background:#fff}
+.fig img{display:block; width:100%; max-width:100%; height:auto; border-radius:10px; box-shadow:0 1px 2px rgba(0,0,0,.08), 0 12px 32px -12px rgba(0,0,0,.35)}
+.fig img.plot{border-radius:0; box-shadow:none}
 .fig figcaption{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); line-height:1.55}
 .fig figcaption a{color:var(--muted)}
 .fig figcaption a:hover{color:var(--accent)}
 .hero-fig{display:flex; flex-direction:column; gap:12px; min-width:0}
-.hero-thumbs{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
-.hero-thumbs img{aspect-ratio:1; object-fit:contain}
+.hero-pair{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(12px,1.6vw,22px)}
 .hero-cap{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); line-height:1.55}
 .hero-cap a{color:var(--muted)}
 .hero-cap a:hover{color:var(--accent)}
@@ -261,7 +265,6 @@ footer{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); bor
 .specs dd{margin:0; font-size:var(--s-sm)}
 @media (max-width: 1100px){
   .hero-grid{grid-template-columns:minmax(0,1fr)}
-  .hero-fig{max-width:560px}
 }
 @media (max-width: 760px){
   .projects{grid-template-columns:minmax(0,1fr)}
@@ -365,14 +368,11 @@ img{max-width:100%}
           </div>
         </div>
         <div class="hero-fig">
-          <figure class="fig">
-            <img src="assets/figures/ngc5903-meerkat-uhf.webp" width="1432" height="1321" alt="MeerKAT UHF-band radio image of the galaxy group NGC 5903: extended diffuse emission with a ring-like arc around the central galaxy and a compact double source to the south, with a 20 kpc scale bar." fetchpriority="high">
-          </figure>
-          <div class="hero-thumbs">
-            <figure class="fig"><img src="assets/figures/ngc5903-optical-overlay.webp" width="900" height="788" alt="MeerKAT radio emission of NGC 5903 over an optical image, with labels for NGC 5903, the ring, the diffuse component, ESO 514-3 and NGC 5898."></figure>
-            <figure class="fig"><img src="assets/figures/ngc5903-spectral-index.webp" width="853" height="900" alt="Spectral index map of NGC 5903 between 816 and 1284 MHz, with values from about −1.4 to 0."></figure>
+          <div class="hero-pair">
+            <figure class="fig"><img src="assets/figures/ngc5903-meerkat-l.webp" width="1172" height="1171" alt="MeerKAT L-band radio image of the galaxy group NGC 5903: extended diffuse emission with a ring-like arc around the central galaxy and a compact double source to the south, with a 20 kpc scale bar." fetchpriority="high"></figure>
+            <figure class="fig"><img src="assets/figures/ngc5903-optical-overlay.webp" width="880" height="880" alt="MeerKAT radio emission of NGC 5903 over an optical image, with labels for NGC 5903, the ring, the diffuse component, ESO 514-3 and NGC 5898."></figure>
           </div>
-          <p class="hero-cap">NGC 5903 with MeerKAT: UHF image (top), radio over optical, and spectral index between 816 and 1284 MHz. <a href="https://arxiv.org/abs/2610.36170" target="_blank" rel="noopener">Pasini et al. 2026, A&amp;A, accepted (arXiv:2610.36170)</a></p>
+          <p class="hero-cap">NGC 5903 with MeerKAT in L-band (left) and over an optical image (right). <a href="https://arxiv.org/abs/2610.36170" target="_blank" rel="noopener">Pasini et al. 2026, A&amp;A, accepted (arXiv:2610.36170)</a></p>
         </div>
       </div>
       <div class="facts" aria-label="Key figures">
@@ -401,11 +401,11 @@ img{max-width:100%}
         </div>
         <div class="figs">
           <figure class="fig">
-            <img src="assets/figures/groups-clusters-lx-pradio.webp" width="1400" height="1104" loading="lazy" alt="Scatter plot of 1.4 GHz radio power of central galaxies against X-ray luminosity, with galaxy groups in grey and cool-core, non-cool-core and unknown clusters in colour, all following one correlation.">
+            <img class="plot" src="assets/figures/groups-clusters-lx-pradio.webp" width="1400" height="1100" loading="lazy" alt="Scatter plot of 1.4 GHz radio power of central galaxies against X-ray luminosity, with galaxy groups in grey and cool-core, non-cool-core and unknown clusters in colour, all following one correlation.">
             <figcaption>Groups (grey) and clusters follow the same relation between central radio power and X-ray luminosity. <a href="https://ui.adsabs.harvard.edu/abs/2020MNRAS.497.2163P/abstract" target="_blank" rel="noopener">Pasini et al. 2020</a></figcaption>
           </figure>
           <figure class="fig">
-            <img src="assets/figures/efeds-kinetic-luminosity.webp" width="1212" height="1187" loading="lazy" alt="Scatter plot of the kinetic luminosity of central radio galaxies against the X-ray luminosity of their hosts, for eFEDS and COSMOS systems, with a best-fit relation.">
+            <img class="plot" src="assets/figures/efeds-kinetic-luminosity.webp" width="1188" height="1163" loading="lazy" alt="Scatter plot of the kinetic luminosity of central radio galaxies against the X-ray luminosity of their hosts, for eFEDS and COSMOS systems, with a best-fit relation.">
             <figcaption>Jet (kinetic) power of central radio galaxies against the X-ray luminosity of their hosts. <a href="https://ui.adsabs.harvard.edu/abs/2022A%26A...661A..13P/abstract" target="_blank" rel="noopener">Pasini et al. 2022</a></figcaption>
           </figure>
         </div>
@@ -419,11 +419,11 @@ img{max-width:100%}
         </div>
         <div class="figs">
           <figure class="fig">
-            <img src="assets/figures/a2495-cavities.webp" width="1190" height="1084" loading="lazy" alt="Chandra X-ray residual image of the cluster A2495 with radio and H-alpha contours; inner and outer cavity pairs are marked, with a 10 kpc scale bar.">
+            <img src="assets/figures/a2495-cavities.webp" width="1181" height="1074" loading="lazy" alt="Chandra X-ray residual image of the cluster A2495 with radio and H-alpha contours; inner and outer cavity pairs are marked, with a 10 kpc scale bar.">
             <figcaption>A2495: Chandra residual image with radio and Hα contours and two pairs of X-ray cavities. <a href="https://ui.adsabs.harvard.edu/abs/2019ApJ...885..111P/abstract" target="_blank" rel="noopener">Pasini et al. 2019</a></figcaption>
           </figure>
           <figure class="fig">
-            <img src="assets/figures/a1668-multiwavelength.webp" width="1310" height="1001" loading="lazy" alt="Four panels of the central galaxy of A1668: X-ray, radio at 1.4 GHz, H-alpha and optical, each with a 20 kpc scale bar.">
+            <img src="assets/figures/a1668-multiwavelength.webp" width="1290" height="982" loading="lazy" alt="Four panels of the central galaxy of A1668: X-ray, radio at 1.4 GHz, H-alpha and optical, each with a 20 kpc scale bar.">
             <figcaption>A1668 in X-rays, radio (1.4 GHz), Hα and optical. <a href="https://ui.adsabs.harvard.edu/abs/2021ApJ...911...66P/abstract" target="_blank" rel="noopener">Pasini et al. 2021</a></figcaption>
           </figure>
         </div>
@@ -437,12 +437,12 @@ img{max-width:100%}
         </div>
         <div class="figs">
           <figure class="fig">
-            <img src="assets/figures/a1550-diffuse.webp" width="1284" height="1196" loading="lazy" alt="LOFAR radio emission of the galaxy cluster Abell 1550 in red over an optical image, with labels for the halo, AGN tail, depletion, bridge, relic and other sources, and a 500 kpc scale bar.">
+            <img src="assets/figures/a1550-diffuse.webp" width="1065" height="1066" loading="lazy" alt="LOFAR radio emission of the galaxy cluster Abell 1550 in red over an optical image, with labels for the halo, AGN tail, depletion, bridge, relic and other sources, and a 500 kpc scale bar.">
             <figcaption>Abell 1550: halo, relic, bridge and AGN tail seen by LOFAR, over an optical image. <a href="https://ui.adsabs.harvard.edu/abs/2022A%26A...663A.105P/abstract" target="_blank" rel="noopener">Pasini et al. 2022</a></figcaption>
           </figure>
           <figure class="fig">
-            <img src="assets/figures/halo-54-144mhz.webp" width="1600" height="747" loading="lazy" alt="Two radio images of the same galaxy cluster side by side, at 54 MHz on the left and 144 MHz on the right; the diffuse halo emission is more extended at the lower frequency.">
-            <figcaption>A radio halo from the LoTSS-DR1 sample at 54 MHz (left) and 144 MHz (right): the diffuse emission stands out more at the lower frequency. <a href="https://ui.adsabs.harvard.edu/abs/2024A%26A...689A.218P/abstract" target="_blank" rel="noopener">Pasini et al. 2024</a></figcaption>
+            <img src="assets/figures/halo-54-144mhz.webp" width="1800" height="891" loading="lazy" alt="Two radio images of the same galaxy cluster side by side, at 54 MHz on the left and 144 MHz on the right; the diffuse halo emission is more extended at the lower frequency.">
+            <figcaption>A radio halo from the LoTSS-DR1 sample at 54 MHz (left) and 144 MHz (right): the diffuse emission is brighter and more extended at the lower frequency. <a href="https://ui.adsabs.harvard.edu/abs/2024A%26A...689A.218P/abstract" target="_blank" rel="noopener">Pasini et al. 2024</a></figcaption>
           </figure>
         </div>
       </article>
@@ -455,12 +455,12 @@ img{max-width:100%}
         </div>
         <div class="figs">
           <figure class="fig">
-            <img src="assets/figures/a1213-tail.webp" width="1303" height="1244" loading="lazy" alt="LOFAR radio emission of the galaxy group Abell 1213 over an optical image: a long tail extends from the radio galaxy 4C 29.41, with labels for the tail, eastern edge, head-tail galaxy, fragmented emission and brightest group galaxy.">
+            <img src="assets/figures/a1213-tail.webp" width="1123" height="1123" loading="lazy" alt="LOFAR radio emission of the galaxy group Abell 1213 over an optical image: a long tail extends from the radio galaxy 4C 29.41, with labels for the tail, eastern edge, head-tail galaxy, fragmented emission and brightest group galaxy.">
             <figcaption>Abell 1213: the ~500 kpc tail of 4C 29.41 over an optical image. <a href="https://ui.adsabs.harvard.edu/abs/2025A%26A...693A..94P/abstract" target="_blank" rel="noopener">Pasini et al. 2025</a></figcaption>
           </figure>
           <figure class="fig">
-            <img src="assets/figures/a1213-spectral-index.webp" width="1151" height="1243" loading="lazy" alt="Spectral index map of the radio tail in Abell 1213 with a colour scale from about −4 to −1 and an inset map of upper limits.">
-            <figcaption>Spectral index map of the A1213 tail. <a href="https://ui.adsabs.harvard.edu/abs/2025A%26A...693A..94P/abstract" target="_blank" rel="noopener">Pasini et al. 2025</a></figcaption>
+            <img src="assets/figures/a1213-hba-high-res.webp" width="1171" height="1171" loading="lazy" alt="LOFAR 144 MHz image of Abell 1213 showing the bright radio galaxy 4C 29.41 and the long diffuse tail, with contours and a 100 kpc scale bar.">
+            <figcaption>A1213 at 144 MHz with LOFAR: the tail and the bright radio galaxy 4C 29.41. <a href="https://ui.adsabs.harvard.edu/abs/2025A%26A...693A..94P/abstract" target="_blank" rel="noopener">Pasini et al. 2025</a></figcaption>
           </figure>
         </div>
       </article>
@@ -472,7 +472,7 @@ img{max-width:100%}
         </div>
         <div class="figs">
           <figure class="fig half">
-            <img src="assets/figures/radio-surveys-sensitivity.webp" width="1400" height="1250" loading="lazy" alt="Plot of sensitivity against observing frequency for radio surveys such as LoLSS, LoTSS, GLEAM, NVSS, FIRST and VLASS, with the expected SKA-Low and SKA-Mid sensitivities below them.">
+            <img class="plot" src="assets/figures/radio-surveys-sensitivity.webp" width="1400" height="1247" loading="lazy" alt="Plot of sensitivity against observing frequency for radio surveys such as LoLSS, LoTSS, GLEAM, NVSS, FIRST and VLASS, with the expected SKA-Low and SKA-Mid sensitivities below them.">
             <figcaption>Sensitivity and frequency of current radio surveys compared with the SKA. <a href="https://ui.adsabs.harvard.edu/abs/2026aask.bookE.130P/abstract" target="_blank" rel="noopener">Pasini et al. 2026</a></figcaption>
           </figure>
         </div>
