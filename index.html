@@ -239,6 +239,11 @@ footer{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); bor
 .hero-cap{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); line-height:1.55}
 .hero-cap a{color:var(--muted)}
 .hero-cap a:hover{color:var(--accent)}
+.intro{padding:clamp(22px,3vw,34px); border-radius:14px; background:var(--panel); border:1px solid var(--panel-line)}
+.intro-h{font-size:var(--s-md); margin:0 0 14px}
+.intro-cols{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(18px,3vw,40px)}
+.intro-cols p{font-size:1rem}
+@media (max-width: 900px){ .intro-cols{grid-template-columns:minmax(0,1fr)} }
 /* research themes */
 .sechead{display:flex; flex-direction:column; gap:6px; margin-bottom:24px}
 .sechead h2{margin:0}
@@ -364,7 +369,6 @@ img{max-width:100%}
           <h2 id="hero-title" class="hero-title">Radio galaxies, hot gas and old relativistic plasma in galaxy groups and clusters, seen at the <em>lowest radio frequencies</em>.</h2>
           <div class="prose lede">
             <p>I am a radio astronomer at the Istituto di Radioastronomia (INAF) in Bologna, where I work in the ERC Consolidator project <a href="#ulu">ULU, The Ultra-Low Frequency Universe</a>. I study how the supermassive black holes in central galaxies interact with the hot gas around them, and what happens to the plasma they leave behind.</p>
-            <p>I combine LOFAR, uGMRT and MeerKAT observations with X-ray data from XMM-Newton, Chandra and eROSITA, from single systems to samples of hundreds of groups.</p>
           </div>
         </div>
         <div class="hero-fig">
@@ -373,6 +377,13 @@ img{max-width:100%}
             <figure class="fig"><img src="assets/figures/ngc5903-optical-overlay.webp" width="880" height="880" alt="MeerKAT radio emission of NGC 5903 over an optical image, with labels for NGC 5903, the ring, the diffuse component, ESO 514-3 and NGC 5898."></figure>
           </div>
           <p class="hero-cap">NGC 5903 with MeerKAT in L-band (left) and over an optical image (right). <a href="https://arxiv.org/abs/2610.36170" target="_blank" rel="noopener">Pasini et al. 2026, A&amp;A, accepted (arXiv:2610.36170)</a></p>
+        </div>
+      </div>
+      <div class="intro">
+        <h2 class="intro-h">Why low radio frequencies</h2>
+        <div class="intro-cols">
+          <p>Supermassive black holes and collisions between galaxy clusters fill the space between galaxies with relativistic electrons and magnetic fields. These particles shine through synchrotron emission, which is brightest at low radio frequencies. Below a few hundred MHz we can see plasma that is too old, too faint or too diffuse to be detected at higher frequencies or in other bands. Radio observations are therefore the most direct record of how black holes heat the hot gas in groups and clusters, and of how the energy of cluster mergers turns into turbulence and particle acceleration.</p>
+          <p>My work uses this window. I combine LOFAR, uGMRT and MeerKAT observations with X-ray data from XMM-Newton, Chandra and eROSITA to follow radio galaxies and the plasma they leave behind, from single systems to survey samples of hundreds of groups and clusters. I lead MAGPIE, a MeerKAT survey of galaxy groups selected by eROSITA, and work in the ERC project ULU, which is opening the sky below 100 MHz.</p>
         </div>
       </div>
       <div class="facts" aria-label="Key figures">
