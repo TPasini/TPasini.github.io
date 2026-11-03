@@ -60,7 +60,7 @@
   --glow-a:rgba(11,107,117,.13);
   --glow-b:rgba(232,150,62,.12);
   --grid:rgba(11,107,117,.16);
-  --panel:rgba(255,255,255,.74);
+  --panel:rgba(255,255,255,.88);
   --panel-line:rgba(19,26,32,.08);
   --f-display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
   --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
@@ -68,23 +68,21 @@
   --s-xs:.78rem; --s-sm:.9rem; --s-base:1.06rem; --s-md:1.25rem; --s-lg:1.6rem; --s-xl:clamp(2.1rem,4.4vw,3.1rem);
 }
 @media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]) .fig img.plot{filter:invert(.9) hue-rotate(180deg) saturate(1.3)}
   :root:not([data-theme="light"]){
     --bg:#091015; --surface:#141B20; --ink:#E5EAED; --muted:#98A4AD; --rule:#26313A;
     --accent:#5FC3CB; --accent-soft:#16303A;
     --map-lo:#071016; --map-mid:#1E7A83; --map-hi:#F4C06A; --map-contour:rgba(255,255,255,.62);
     --glow-a:rgba(64,180,190,.16); --glow-b:rgba(240,160,80,.08); --grid:rgba(120,200,210,.13);
-    --panel:rgba(20,28,34,.72); --panel-line:rgba(255,255,255,.07);
+    --panel:rgba(18,25,31,.9); --panel-line:rgba(255,255,255,.07);
     color-scheme:dark;
   }
 }
-:root[data-theme="dark"] .fig img.plot{filter:invert(.9) hue-rotate(180deg) saturate(1.3)}
 :root[data-theme="dark"]{
   --bg:#091015; --surface:#141B20; --ink:#E5EAED; --muted:#98A4AD; --rule:#26313A;
   --accent:#5FC3CB; --accent-soft:#16303A;
   --map-lo:#071016; --map-mid:#1E7A83; --map-hi:#F4C06A; --map-contour:rgba(255,255,255,.62);
   --glow-a:rgba(64,180,190,.16); --glow-b:rgba(240,160,80,.08); --grid:rgba(120,200,210,.13);
-  --panel:rgba(20,28,34,.72); --panel-line:rgba(255,255,255,.07);
+  --panel:rgba(18,25,31,.9); --panel-line:rgba(255,255,255,.07);
   color-scheme:dark;
 }
 
@@ -193,7 +191,7 @@ a.tag:hover{color:var(--accent); border-color:var(--accent)}
 .skill li::before{content:""; position:absolute; left:0; top:.68em; width:6px; height:1px; background:var(--accent)}
 
 /* Contact */
-.contact{background:var(--panel); border:1px solid var(--panel-line); border-radius:14px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); padding:clamp(20px,4vw,36px); display:flex; flex-direction:column; gap:18px}
+.contact{background:var(--panel); border:1px solid var(--panel-line); border-radius:14px; padding:clamp(20px,4vw,36px); display:flex; flex-direction:column; gap:18px}
 .addr{display:flex; flex-wrap:wrap; align-items:center; gap:10px}
 .addr code{font-family:var(--f-mono); font-size:1rem; background:var(--accent-soft); color:var(--ink); padding:8px 12px; border-radius:6px; user-select:all; word-break:break-all}
 .btn{font:500 var(--s-sm)/1 var(--f-display); color:var(--ink); background:transparent; border:1px solid var(--rule); border-radius:6px; padding:9px 14px; cursor:pointer}
@@ -230,11 +228,13 @@ footer{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); bor
 .fig{margin:0; display:flex; flex-direction:column; gap:10px; min-width:0}
 .fig img{display:block; width:100%; max-width:100%; height:auto; border-radius:10px; box-shadow:0 1px 2px rgba(0,0,0,.08), 0 12px 32px -12px rgba(0,0,0,.35)}
 .fig img.plot{border-radius:0; box-shadow:none}
+.fig picture{display:block}
 .fig figcaption{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); line-height:1.55}
 .fig figcaption a{color:var(--muted)}
 .fig figcaption a:hover{color:var(--accent)}
 .hero-fig{display:flex; flex-direction:column; gap:12px; min-width:0}
-.hero-pair{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(12px,1.6vw,22px)}
+.hero-pair{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(12px,1.6vw,22px); align-items:start}
+.hero-pair img{width:100%; height:auto; aspect-ratio:1 / 1; object-fit:cover; outline:1px solid var(--rule); outline-offset:-1px}
 .hero-cap{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); line-height:1.55}
 .hero-cap a{color:var(--muted)}
 .hero-cap a:hover{color:var(--accent)}
@@ -243,8 +243,7 @@ footer{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); bor
 .sechead h2{margin:0}
 .note{font-size:var(--s-sm); color:var(--muted)}
 .theme{display:flex; flex-direction:column; gap:22px; padding:clamp(20px,3vw,32px); margin-bottom:20px;
-  background:var(--panel); border:1px solid var(--panel-line); border-radius:14px;
-  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px)}
+  background:var(--panel); border:1px solid var(--panel-line); border-radius:14px;}
 .theme-text{display:flex; flex-direction:column; gap:12px; min-width:0; max-width:68ch}
 .theme-meta{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:baseline}
 .theme .band{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); letter-spacing:.02em}
@@ -254,7 +253,7 @@ footer{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); bor
 .fig.wide{grid-column:1 / -1}
 /* projects */
 .projects{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px}
-.project{background:var(--panel); border:1px solid var(--panel-line); border-radius:14px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); padding:22px; display:flex; flex-direction:column; gap:12px; min-width:0}
+.project{background:var(--panel); border:1px solid var(--panel-line); border-radius:14px; padding:22px; display:flex; flex-direction:column; gap:12px; min-width:0}
 .project-head{display:flex; flex-direction:column; align-items:flex-start; gap:8px}
 .project h3{font-size:1.35rem; letter-spacing:.04em}
 .pill{font-family:var(--f-mono); font-size:.72rem; color:var(--accent); background:var(--accent-soft); border-radius:999px; padding:3px 10px}
@@ -278,7 +277,7 @@ footer{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); bor
 /* ULU feature */
 .ulu{display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:clamp(20px,3vw,40px); margin-bottom:20px;
   padding:clamp(22px,3vw,34px); border-radius:14px; border:1px solid var(--panel-line);
-  background:linear-gradient(135deg, var(--accent-soft), var(--panel) 60%); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px)}
+  background:linear-gradient(135deg, var(--accent-soft), var(--panel) 60%); }
 .ulu-text{display:flex; flex-direction:column; gap:12px; min-width:0; max-width:70ch}
 .ulu h3{font-size:1.35rem}
 .ulu-text p{font-size:1rem}
@@ -287,7 +286,7 @@ footer{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); bor
 .ulu-specs div{padding-block:8px; border-bottom:1px solid var(--rule)}
 /* collaborations */
 .collabs{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px}
-.collab{display:flex; flex-direction:column; gap:6px; padding:20px; border-radius:14px; background:var(--panel); border:1px solid var(--panel-line); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); min-width:0}
+.collab{display:flex; flex-direction:column; gap:6px; padding:20px; border-radius:14px; background:var(--panel); border:1px solid var(--panel-line); min-width:0}
 .collab-name{font-family:var(--f-display); font-weight:700; font-size:1.25rem; letter-spacing:.03em}
 .collab-tag{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--accent)}
 .collab p{font-size:.96rem; color:var(--muted); margin-top:4px}
@@ -401,11 +400,11 @@ img{max-width:100%}
         </div>
         <div class="figs">
           <figure class="fig">
-            <img class="plot" src="assets/figures/groups-clusters-lx-pradio.webp" width="1400" height="1100" loading="lazy" alt="Scatter plot of 1.4 GHz radio power of central galaxies against X-ray luminosity, with galaxy groups in grey and cool-core, non-cool-core and unknown clusters in colour, all following one correlation.">
+            <picture><source srcset="assets/figures/groups-clusters-lx-pradio-dark.webp" media="(prefers-color-scheme: dark)"><img class="plot" src="assets/figures/groups-clusters-lx-pradio.webp" width="1400" height="1100" loading="lazy" alt="Scatter plot of 1.4 GHz radio power of central galaxies against X-ray luminosity, with galaxy groups in grey and cool-core, non-cool-core and unknown clusters in colour, all following one correlation."></picture>
             <figcaption>Groups (grey) and clusters follow the same relation between central radio power and X-ray luminosity. <a href="https://ui.adsabs.harvard.edu/abs/2020MNRAS.497.2163P/abstract" target="_blank" rel="noopener">Pasini et al. 2020</a></figcaption>
           </figure>
           <figure class="fig">
-            <img class="plot" src="assets/figures/efeds-kinetic-luminosity.webp" width="1188" height="1163" loading="lazy" alt="Scatter plot of the kinetic luminosity of central radio galaxies against the X-ray luminosity of their hosts, for eFEDS and COSMOS systems, with a best-fit relation.">
+            <picture><source srcset="assets/figures/efeds-kinetic-luminosity-dark.webp" media="(prefers-color-scheme: dark)"><img class="plot" src="assets/figures/efeds-kinetic-luminosity.webp" width="1188" height="1163" loading="lazy" alt="Scatter plot of the kinetic luminosity of central radio galaxies against the X-ray luminosity of their hosts, for eFEDS and COSMOS systems, with a best-fit relation."></picture>
             <figcaption>Jet (kinetic) power of central radio galaxies against the X-ray luminosity of their hosts. <a href="https://ui.adsabs.harvard.edu/abs/2022A%26A...661A..13P/abstract" target="_blank" rel="noopener">Pasini et al. 2022</a></figcaption>
           </figure>
         </div>
@@ -472,7 +471,7 @@ img{max-width:100%}
         </div>
         <div class="figs">
           <figure class="fig half">
-            <img class="plot" src="assets/figures/radio-surveys-sensitivity.webp" width="1400" height="1247" loading="lazy" alt="Plot of sensitivity against observing frequency for radio surveys such as LoLSS, LoTSS, GLEAM, NVSS, FIRST and VLASS, with the expected SKA-Low and SKA-Mid sensitivities below them.">
+            <picture><source srcset="assets/figures/radio-surveys-sensitivity-dark.webp" media="(prefers-color-scheme: dark)"><img class="plot" src="assets/figures/radio-surveys-sensitivity.webp" width="1400" height="1247" loading="lazy" alt="Plot of sensitivity against observing frequency for radio surveys such as LoLSS, LoTSS, GLEAM, NVSS, FIRST and VLASS, with the expected SKA-Low and SKA-Mid sensitivities below them."></picture>
             <figcaption>Sensitivity and frequency of current radio surveys compared with the SKA. <a href="https://ui.adsabs.harvard.edu/abs/2026aask.bookE.130P/abstract" target="_blank" rel="noopener">Pasini et al. 2026</a></figcaption>
           </figure>
         </div>
