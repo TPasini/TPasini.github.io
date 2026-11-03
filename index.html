@@ -4,16 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Thomas Pasini · Radio astronomer, IRA–INAF Bologna</title>
-<meta name="description" content="Thomas Pasini is a radio astronomer and data scientist at the Istituto di Radioastronomia (INAF) in Bologna, working on AGN feedback, diffuse radio emission in galaxy clusters and groups, and ultra-low-frequency LOFAR observations.">
+<meta name="description" content="Thomas Pasini is a radio astronomer at the Istituto di Radioastronomia (INAF) in Bologna. He studies AGN feedback, radio galaxies and diffuse non-thermal emission in galaxy groups and clusters with LOFAR, uGMRT and MeerKAT, and leads the MeerKAT Large Programme MAGPIE.">
 <meta name="author" content="Thomas Pasini">
 <link rel="canonical" href="https://tpasini.github.io/">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Thomas Pasini · Radio astronomer, IRA–INAF Bologna">
-<meta property="og:description" content="AGN feedback, diffuse radio emission and ultra-low-frequency LOFAR observations of galaxy clusters and groups.">
+<meta property="og:description" content="Radio galaxies, AGN feedback and diffuse non-thermal emission in galaxy groups and clusters, observed with LOFAR, uGMRT and MeerKAT.">
 <meta property="og:url" content="https://tpasini.github.io/">
 <meta property="profile:first_name" content="Thomas">
 <meta property="profile:last_name" content="Pasini">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://tpasini.github.io/assets/figures/a1213-tail.webp">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Ccircle cx='17' cy='17' r='15' fill='%230B6B75'/%3E%3Ccircle cx='17' cy='17' r='9.5' fill='none' stroke='white' stroke-width='1.6' opacity='.8'/%3E%3Ccircle cx='17' cy='17' r='3' fill='white'/%3E%3C/svg%3E">
 <script type="application/ld+json">
 {
@@ -122,12 +123,10 @@ p{margin:0}
 
 /* Hero */
 .hero{display:flex; flex-direction:column; gap:28px}
-.hero-title{font-family:var(--f-display); font-weight:700; font-size:var(--s-xl); line-height:1.08; letter-spacing:-.02em; margin:0; max-width:20ch; text-wrap:balance}
+.hero-title{font-family:var(--f-display); font-weight:700; font-size:clamp(1.9rem,3.3vw,2.7rem); line-height:1.08; letter-spacing:-.02em; margin:0; max-width:20ch; text-wrap:balance}
 .hero-title em{font-style:normal; color:var(--accent)}
 .lede{font-size:1.15rem; color:var(--muted); max-width:60ch}
 .figure{margin:0; display:flex; flex-direction:column; gap:10px}
-.mapwrap{position:relative; width:100%; max-width:100%; aspect-ratio:16/8; background:var(--map-lo); border-radius:6px; overflow:hidden}
-.mapwrap canvas{display:block; width:100%; height:100%}
 .figure figcaption{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); line-height:1.5}
 
 .facts{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule)}
@@ -207,8 +206,46 @@ footer{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); bor
   .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fact:nth-child(3){padding-left:0; border-left:0}
   .fact:nth-child(n+3){border-top:1px solid var(--rule)}
-  .mapwrap{aspect-ratio:4/3}
-  .pub,.step{grid-template-columns:minmax(0,1fr); gap:4px}
+    .pub,.step{grid-template-columns:minmax(0,1fr); gap:4px}
+}
+
+
+/* hero with figure */
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:clamp(24px,4vw,48px); align-items:center}
+.hero-text{display:flex; flex-direction:column; gap:22px; min-width:0}
+.fig{margin:0; display:flex; flex-direction:column; gap:10px; min-width:0}
+.fig img{display:block; width:100%; max-width:100%; height:auto; border-radius:6px; border:1px solid var(--rule); background:#fff}
+.fig figcaption{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); line-height:1.55}
+.fig figcaption a{color:var(--muted)}
+.fig figcaption a:hover{color:var(--accent)}
+/* research themes */
+.theme{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:clamp(24px,4vw,48px); align-items:start; padding-block:32px; border-top:1px solid var(--rule)}
+.theme.flip .fig{order:-1}
+.theme.flip{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+.theme.nofig{grid-template-columns:minmax(0,1fr)}
+.theme-text{display:flex; flex-direction:column; gap:12px; min-width:0; max-width:65ch}
+.theme .band{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); letter-spacing:.02em}
+.theme-text p{font-size:1rem}
+/* projects */
+.projects{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px}
+.project{background:var(--surface); border:1px solid var(--rule); border-radius:8px; padding:22px; display:flex; flex-direction:column; gap:12px; min-width:0}
+.project-head{display:flex; flex-direction:column; align-items:flex-start; gap:8px}
+.project h3{font-size:1.35rem; letter-spacing:.04em}
+.pill{font-family:var(--f-mono); font-size:.72rem; color:var(--accent); background:var(--accent-soft); border-radius:999px; padding:3px 10px}
+.project p{font-size:.98rem}
+.specs{margin:auto 0 0; padding-top:12px; border-top:1px solid var(--rule); display:flex; flex-direction:column; gap:6px}
+.specs div{display:flex; flex-direction:column; gap:2px}
+.specs dt{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); text-transform:uppercase; letter-spacing:.06em; padding-top:2px}
+.specs dd{margin:0; font-size:var(--s-sm)}
+@media (max-width: 1100px){
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-fig{max-width:560px}
+  .projects{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width: 760px){
+  .theme, .theme.flip{grid-template-columns:minmax(0,1fr)}
+  .theme.flip .fig{order:0}
+  .theme .fig{max-width:520px}
 }
 
 /* base reset */
@@ -239,9 +276,9 @@ img{max-width:100%}
     <nav class="nav" aria-label="Sections">
       <a href="#about">About</a>
       <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
       <a href="#publications">Publications</a>
       <a href="#career">Career</a>
-      <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="links">
@@ -258,17 +295,19 @@ img{max-width:100%}
 
   <main>
     <section id="about" class="hero" aria-labelledby="hero-title">
-      <p class="eyebrow">Radio astronomy · Galaxy clusters &amp; groups</p>
-      <h2 id="hero-title" class="hero-title">How black holes heat the hot gas of galaxy groups and clusters, seen at the <em>lowest radio frequencies</em>.</h2>
-      <div class="prose lede">
-        <p>I am a radio astronomer and data scientist at the Istituto di Radioastronomia (INAF) in Bologna. I study feedback from active galactic nuclei (AGN), non-thermal emission in galaxy clusters and groups, and the faint, steep-spectrum radio sources that only show up below 100 MHz.</p>
-      </div>
-      <figure class="figure">
-        <div class="mapwrap"><canvas id="map" role="img" aria-label="Illustrative synthetic radio map of a galaxy cluster with a diffuse halo, a tailed radio galaxy and compact sources, drawn with contours, a beam ellipse and a scale bar."></canvas></div>
-        <figcaption>Illustrative synthetic map, not real data. Diffuse halo, a tailed radio galaxy and compact sources; contours start at 3σ and double at each level; beam shown bottom left.</figcaption>
-      </figure>
-      <div class="prose">
-        <p>My work combines low-frequency radio observations from LOFAR with X-ray surveys such as eROSITA. I build Python pipelines for calibration and large-scale data processing, apply statistical analysis to survey samples, and lead projects in multi-institutional international collaborations, from defining requirements to delivering results.</p>
+      <div class="hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Radio astronomy · Galaxy groups &amp; clusters</p>
+          <h2 id="hero-title" class="hero-title">Radio galaxies, hot gas and old relativistic plasma in galaxy groups and clusters, seen at the <em>lowest radio frequencies</em>.</h2>
+          <div class="prose lede">
+            <p>I am a radio astronomer at the Istituto di Radioastronomia (INAF) in Bologna. I study how the supermassive black holes in central galaxies interact with the hot gas around them, and what happens to the plasma they leave behind.</p>
+            <p>I combine LOFAR, uGMRT and MeerKAT observations with X-ray data from XMM-Newton, Chandra and eROSITA, from single systems to samples of hundreds of groups.</p>
+          </div>
+        </div>
+        <figure class="fig hero-fig">
+          <img src="assets/figures/a1213-tail.webp" width="1303" height="1244" alt="LOFAR radio emission of the galaxy group Abell 1213 over an optical image: a long tail extends from the radio galaxy 4C 29.41 towards the north-east, with labels for the tail, eastern edge, head-tail galaxy, fragmented emission and brightest group galaxy." fetchpriority="high">
+          <figcaption>Abell 1213: a ~500 kpc radio tail left by a past outburst of 4C 29.41, over an optical image. <a href="https://ui.adsabs.harvard.edu/abs/2025A%26A...693A..94P/abstract" target="_blank" rel="noopener">Pasini et al. 2025, A&amp;A 693, A94</a></figcaption>
+        </figure>
       </div>
       <div class="facts" aria-label="Key figures">
 <!-- FACTS:START -->
@@ -282,42 +321,82 @@ img{max-width:100%}
 
     <section id="research" aria-labelledby="research-h">
       <p class="eyebrow">Research</p>
-      <h2 id="research-h">Research areas</h2>
-      <div class="areas">
-        <article class="area">
-          <span class="band">X-ray + radio · groups &amp; clusters</span>
-          <h3>AGN feedback</h3>
-          <p>How radio-loud AGN at the centres of groups and clusters keep the hot intracluster gas from cooling. I measured how the diffuse X-ray luminosity scales with the radio power of the central AGN, and studied the brightest cluster galaxies of the eROSITA eFEDS field with LOFAR.</p>
-          <span class="refs"><a href="https://arxiv.org/abs/2007.04999" target="_blank" rel="noopener">2020</a> · <a href="https://arxiv.org/abs/2105.08727" target="_blank" rel="noopener">2021</a> · <a href="https://arxiv.org/abs/2106.14524" target="_blank" rel="noopener">2022</a></span>
+      <h2 id="research-h">What my papers are about</h2>
+
+      <article class="theme">
+        <div class="theme-text">
+          <span class="band">Statistical samples · COSMOS · eFEDS</span>
+          <h3>AGN feedback from groups to clusters</h3>
+          <p>Do the feedback loops seen in massive clusters also operate in galaxy groups? In 247 X-ray groups in COSMOS, groups and clusters follow the same correlation between the X-ray luminosity of the hot gas and the radio power of the central galaxy, and groups host large radio galaxies more often (<a href="https://ui.adsabs.harvard.edu/abs/2020MNRAS.497.2163P/abstract" target="_blank" rel="noopener">Pasini et al. 2020</a>). The most powerful group radio galaxies always sit within 0.2 R<sub>vir</sub> of the group centre (<a href="https://ui.adsabs.harvard.edu/abs/2021MNRAS.505.2628P/abstract" target="_blank" rel="noopener">Pasini et al. 2021</a>).</p>
+          <p>With LOFAR I identified radio galaxies in 227 brightest cluster galaxies of the 542 clusters and groups in the eROSITA eFEDS field, and compared their jet power with the X-ray luminosity of their hosts (<a href="https://ui.adsabs.harvard.edu/abs/2022A%26A...661A..13P/abstract" target="_blank" rel="noopener">Pasini et al. 2022</a>).</p>
+        </div>
+        <figure class="fig">
+          <img src="assets/figures/efeds-kinetic-luminosity.webp" width="1212" height="1187" loading="lazy" alt="Scatter plot of the kinetic luminosity of central radio galaxies against the X-ray luminosity of their host clusters and groups, for eFEDS and COSMOS systems, with a best-fit relation.">
+          <figcaption>Jet (kinetic) power of central radio galaxies against the X-ray luminosity of their hosts, eFEDS and COSMOS. <a href="https://ui.adsabs.harvard.edu/abs/2022A%26A...661A..13P/abstract" target="_blank" rel="noopener">Pasini et al. 2022, A&amp;A 661, A13</a></figcaption>
+        </figure>
+      </article>
+
+      <article class="theme flip">
+        <div class="theme-text">
+          <span class="band">Chandra · VLA · Hα</span>
+          <h3>When cooling happens off-centre</h3>
+          <p>In the clusters A2495 and A1668 the X-ray peak, the coolest gas and the central galaxy do not coincide: they are separated by 4–8 kpc, most likely because sloshing of the intracluster medium displaces the cooling gas (<a href="https://ui.adsabs.harvard.edu/abs/2019ApJ...885..111P/abstract" target="_blank" rel="noopener">Pasini et al. 2019</a>; <a href="https://ui.adsabs.harvard.edu/abs/2021ApJ...911...66P/abstract" target="_blank" rel="noopener">2021</a>).</p>
+          <p>Pairs of X-ray cavities inflated by the radio lobes show that the AGN keeps injecting energy. In A1668 this energy is still in line with the cooling losses, so offset cooling does not seem to break the feedback cycle.</p>
+        </div>
+        <figure class="fig">
+          <img src="assets/figures/a2495-cavities.webp" width="1190" height="1084" loading="lazy" alt="Chandra X-ray residual image of the cluster A2495 with radio and H-alpha contours; inner and outer cavity pairs are marked, with a 10 kpc scale bar.">
+          <figcaption>A2495: Chandra residual image with radio and Hα contours and two pairs of X-ray cavities. <a href="https://ui.adsabs.harvard.edu/abs/2019ApJ...885..111P/abstract" target="_blank" rel="noopener">Pasini et al. 2019, ApJ 885, 111</a></figcaption>
+        </figure>
+      </article>
+
+      <article class="theme">
+        <div class="theme-text">
+          <span class="band">Halos · relics · bridges · phoenices</span>
+          <h3>Particle re-acceleration in the intracluster medium</h3>
+          <p>Abell 1550 hosts an ultra-steep-spectrum radio halo (S<sub>ν</sub> ∝ ν<sup>−1.6</sup>) extending ~1.2 Mpc at 54 MHz, a relic, a ~600 kpc bridge between the two and a radio phoenix (<a href="https://ui.adsabs.harvard.edu/abs/2022A%26A...663A.105P/abstract" target="_blank" rel="noopener">Pasini et al. 2022</a>).</p>
+          <p>Combining the two LOFAR surveys, LoTSS at 144 MHz and LoLSS at 54 MHz, I found that 7 of 11 radio halos have ultra-steep spectra (α &lt; −1.5), as predicted by turbulent re-acceleration models (<a href="https://ui.adsabs.harvard.edu/abs/2024A%26A...689A.218P/abstract" target="_blank" rel="noopener">Pasini et al. 2024</a>).</p>
+        </div>
+        <figure class="fig">
+          <img src="assets/figures/a1550-diffuse.webp" width="1284" height="1196" loading="lazy" alt="LOFAR radio emission of the galaxy cluster Abell 1550 in red over an optical image, with labels for the halo, AGN tail, depletion, bridge, relic and other sources, and a 500 kpc scale bar.">
+          <figcaption>Abell 1550: halo, relic, bridge and AGN tail in LOFAR data over an optical image. <a href="https://ui.adsabs.harvard.edu/abs/2022A%26A...663A.105P/abstract" target="_blank" rel="noopener">Pasini et al. 2022, A&amp;A 663, A105</a></figcaption>
+        </figure>
+      </article>
+
+      <article class="theme nofig">
+        <div class="theme-text">
+          <span class="band">LOFAR LBA · uGMRT · X-GAP · SKA</span>
+          <h3>Galaxy groups below 100 MHz</h3>
+          <p>Most radio-loud AGN in the nearby Universe live in galaxy groups, yet their non-thermal emission is barely explored. In Abell 1213 (above), LOFAR at 54 MHz and the uGMRT at 380 MHz trace a ~500 kpc tail from a past outburst of 4C 29.41; a plateau in its spectral index points to mild particle re-acceleration (<a href="https://ui.adsabs.harvard.edu/abs/2025A%26A...693A..94P/abstract" target="_blank" rel="noopener">Pasini et al. 2025</a>). In a chapter for the SKA science book I reviewed what LOFAR, uGMRT and MeerKAT have shown about feedback in groups, and what the SKA will add (<a href="https://ui.adsabs.harvard.edu/abs/2026aask.bookE.130P/abstract" target="_blank" rel="noopener">Pasini et al. 2026</a>).</p>
+        </div>
+      </article>
+
+      <article class="theme nofig">
+        <div class="theme-text">
+          <span class="band">LoTSS · eROSITA · pipelines</span>
+          <h3>Surveys and methods</h3>
+          <p>I contribute to the LOFAR Two-metre Sky Survey data releases and to eROSITA cluster studies, and to searches for rare sources such as odd radio circles in LoTSS DR3 (<a href="https://ui.adsabs.harvard.edu/abs/2026A%26A...709A.154D/abstract" target="_blank" rel="noopener">2026</a>). For my PhD I built a calibration pipeline for LOFAR Low Band Antenna data at 54 MHz; most of my analysis runs on Python tools I write for survey-scale samples (<a href="https://github.com/TPasini" target="_blank" rel="noopener">GitHub</a>).</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-h">
+      <p class="eyebrow">Projects</p>
+      <h2 id="projects-h">Projects I lead</h2>
+      <div class="projects">
+        <article class="project">
+          <div class="project-head"><h3>MAGPIE</h3><span class="pill">Principal Investigator</span></div>
+          <p>A MeerKAT Large Programme observing about 470 galaxy groups selected by eROSITA, in L-band and UHF. MAGPIE gives a statistical radio view of AGN feedback and non-thermal emission across the group population.</p>
+          <dl class="specs"><div><dt>Telescope</dt><dd>MeerKAT · L-band + UHF</dd></div><div><dt>Sample</dt><dd>~470 eROSITA groups</dd></div></dl>
         </article>
-        <article class="area">
-          <span class="band">LOFAR LBA · 30–80 MHz</span>
-          <h3>Ultra-low-frequency radio astronomy</h3>
-          <p>Observing below 100 MHz exposes old, steep-spectrum plasma that higher frequencies miss. I developed a calibration pipeline for LOFAR Low Band Antenna data at 54 MHz and use LoLSS together with LoTSS at 144 MHz.</p>
-          <span class="refs"><a href="https://arxiv.org/abs/2205.12281" target="_blank" rel="noopener">2022</a> · <a href="https://arxiv.org/abs/2406.12005" target="_blank" rel="noopener">2024</a></span>
+        <article class="project">
+          <div class="project-head"><h3>FORGE</h3><span class="pill">Principal Investigator · upcoming</span></div>
+          <p>A project on non-thermal emission in galaxy groups, centred on non-thermal filaments. It builds on the MAGPIE and X-GAP samples to connect diffuse emission, AGN feedback and the cosmic web around groups.</p>
+          <dl class="specs"><div><dt>Data</dt><dd>MeerKAT · LOFAR · uGMRT · X-ray</dd></div><div><dt>Samples</dt><dd>MAGPIE + X-GAP</dd></div></dl>
         </article>
-        <article class="area">
-          <span class="band">Radio halos · relics · bridges</span>
-          <h3>Diffuse cluster radio emission</h3>
-          <p>Radio halos and other diffuse sources trace turbulence and particle re-acceleration in the intracluster medium. I measured the ultra-low-frequency spectral indices of a sample of radio halos and studied re-acceleration in Abell 1550.</p>
-          <span class="refs"><a href="https://arxiv.org/abs/2205.12281" target="_blank" rel="noopener">2022</a> · <a href="https://arxiv.org/abs/2406.12005" target="_blank" rel="noopener">2024</a></span>
-        </article>
-        <article class="area">
-          <span class="band">Galaxy groups · non-thermal</span>
-          <h3>Non-thermal emission in galaxy groups</h3>
-          <p>Groups are the most common environment for galaxies, but their non-thermal emission is faint and poorly sampled. I study it at extremely low frequencies, as in the group A1213, and the kinematics and scaling relations of group radio galaxies.</p>
-          <span class="refs"><a href="https://arxiv.org/abs/2105.08727" target="_blank" rel="noopener">2021</a> · <a href="https://arxiv.org/abs/2411.16853" target="_blank" rel="noopener">2025</a></span>
-        </article>
-        <article class="area">
-          <span class="band">X-ray · radio · optical</span>
-          <h3>Multiphase gas</h3>
-          <p>Hot, warm and cold gas phases together show how AGN feedback cycles operate, including in systems where the central galaxy is offset from the X-ray peak.</p>
-        </article>
-        <article class="area">
-          <span class="band">Pipelines · statistics · surveys</span>
-          <h3>Data science for large surveys</h3>
-          <p>Survey-scale radio and X-ray samples call for reproducible pipelines. I write Python tools for calibration, source characterisation and statistical analysis of large datasets.</p>
-          <span class="refs"><a href="https://github.com/TPasini" target="_blank" rel="noopener">github.com/TPasini</a></span>
+        <article class="project">
+          <div class="project-head"><h3>X-GAP</h3><span class="pill">Radio lead</span></div>
+          <p>The XMM-Newton Group AGN Project, a statistically complete sample of 49 galaxy groups. I lead the radio side, with LOFAR (LBA and HBA) and uGMRT observations (<a href="https://ui.adsabs.harvard.edu/abs/2025A%26A...693A..94P/abstract" target="_blank" rel="noopener">A1213</a>; <a href="https://ui.adsabs.harvard.edu/abs/2026A%26A...710A...1S/abstract" target="_blank" rel="noopener">uGMRT I</a>).</p>
+          <dl class="specs"><div><dt>Telescopes</dt><dd>LOFAR · uGMRT · XMM-Newton</dd></div><div><dt>Sample</dt><dd>49 groups</dd></div></dl>
         </article>
       </div>
     </section>
@@ -476,19 +555,6 @@ img{max-width:100%}
       </ol>
     </section>
 
-    <section id="skills" aria-labelledby="skills-h">
-      <p class="eyebrow">Skills</p>
-      <h2 id="skills-h">Methods &amp; tools</h2>
-      <div class="skills">
-        <div class="skill"><h3>Radio interferometry</h3>
-          <ul><li>LOFAR HBA and LBA data reduction</li><li>Direction-dependent calibration</li><li>Low-frequency surveys: LoTSS, LoLSS</li><li>Spectral index and diffuse-emission analysis</li></ul></div>
-        <div class="skill"><h3>Data science</h3>
-          <ul><li>Python data pipelines</li><li>Statistical analysis of survey samples</li><li>Large-scale dataset processing</li><li>Multi-wavelength cross-matching (radio, X-ray, optical)</li></ul></div>
-        <div class="skill"><h3>Project leadership</h3>
-          <ul><li>Leading data-driven projects in multi-institutional collaborations</li><li>Coordinating international, cross-functional teams</li><li>From requirements to delivery</li></ul></div>
-      </div>
-    </section>
-
     <section id="contact" aria-labelledby="contact-h">
       <p class="eyebrow">Contact</p>
       <div class="contact">
@@ -517,158 +583,6 @@ img{max-width:100%}
 
 <script>
 (function(){
-  /* ---------- Synthetic radio map ---------- */
-  const canvas = document.getElementById('map');
-  function rng(seed){ return function(){ seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-  function gauss(r){ let u=0,v=0; while(!u) u=r(); while(!v) v=r(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
-
-  // Field on a fixed grid in "sky" units (0..1 x, 0..ar y), built once.
-  const GW = 220, GH = 140;
-  let field = null;
-  function buildField(){
-    const r = rng(54);
-    const f = new Float32Array(GW*GH);
-    const comps = [];
-    // diffuse halo (elliptical, slightly irregular)
-    comps.push({x:.52,y:.50,sx:.17,sy:.12,a:1.0,rot:.35});
-    comps.push({x:.60,y:.44,sx:.09,sy:.07,a:.45,rot:0});
-    comps.push({x:.44,y:.57,sx:.08,sy:.06,a:.35,rot:0});
-    // tailed radio galaxy: core + tail of blobs
-    const tx=.22, ty=.30;
-    comps.push({x:tx,y:ty,sx:.008,sy:.008,a:5.0,rot:0});
-    for(let i=1;i<14;i++){ const s=i/13; comps.push({x:tx+ .16*s + .02*Math.sin(s*5), y:ty + .10*s*s, sx:.012+.02*s, sy:.010+.012*s, a:2.2*(1-s*.8), rot:.5}); }
-    // compact sources
-    [[.80,.22,3],[.86,.74,2.2],[.12,.78,1.8],[.68,.82,1.4],[.34,.16,1.2]].forEach(p=>comps.push({x:p[0],y:p[1],sx:.009,sy:.009,a:p[2],rot:0}));
-    for(let j=0;j<GH;j++){
-      for(let i=0;i<GW;i++){
-        const x=i/(GW-1), y=j/(GH-1);
-        let v=0;
-        for(const c of comps){
-          const dx=x-c.x, dy=y-c.y, cs=Math.cos(c.rot), sn=Math.sin(c.rot);
-          const u=(dx*cs+dy*sn)/c.sx, w=(-dx*sn+dy*cs)/c.sy;
-          v += c.a*Math.exp(-.5*(u*u+w*w));
-        }
-        f[j*GW+i]=v;
-      }
-    }
-    // correlated noise: white noise smoothed by a small box blur
-    const n = new Float32Array(GW*GH); for(let k=0;k<n.length;k++) n[k]=gauss(r);
-    const sm = new Float32Array(GW*GH);
-    for(let j=0;j<GH;j++) for(let i=0;i<GW;i++){
-      let s=0,c=0; for(let dj=-2;dj<=2;dj++) for(let di=-2;di<=2;di++){ const ii=i+di, jj=j+dj; if(ii>=0&&jj>=0&&ii<GW&&jj<GH){ s+=n[jj*GW+ii]; c++; } }
-      sm[j*GW+i]=s/c;
-    }
-    for(let k=0;k<f.length;k++) f[k] += .11*sm[k]*2.2;
-    return f;
-  }
-
-  function hexToRgb(s){
-    s=s.trim();
-    if(s.startsWith('#')){ const h=s.slice(1); const n=parseInt(h.length===3?h.split('').map(c=>c+c).join(''):h,16); return [(n>>16)&255,(n>>8)&255,n&255]; }
-    const m=s.match(/[\d.]+/g); return m?m.slice(0,3).map(Number):[0,0,0];
-  }
-  function lerp(a,b,t){ return a+(b-a)*t; }
-
-  function draw(){
-    if(!canvas) return;
-    if(!field) field = buildField();
-    const css = getComputedStyle(document.documentElement);
-    const lo=hexToRgb(css.getPropertyValue('--map-lo')), mid=hexToRgb(css.getPropertyValue('--map-mid')), hi=hexToRgb(css.getPropertyValue('--map-hi'));
-    const contourCol = css.getPropertyValue('--map-contour').trim() || 'rgba(255,255,255,.7)';
-    const monoFont = (css.getPropertyValue('--f-mono')||'monospace').trim();
-
-    const rect = canvas.getBoundingClientRect();
-    const dpr = Math.min(window.devicePixelRatio||1, 2);
-    const W = Math.max(1, Math.round(rect.width*dpr)), H = Math.max(1, Math.round(rect.height*dpr));
-    canvas.width=W; canvas.height=H;
-    const ctx = canvas.getContext('2d');
-
-    // sample field with cover-fit (field aspect GW:GH)
-    const fa = GW/GH, ca = W/H;
-    let sw, sh, ox, oy;
-    if(ca > fa){ sw=GW; sh=GW/ca; ox=0; oy=(GH-sh)/2; } else { sh=GH; sw=GH*ca; oy=0; ox=(GW-sw)/2; }
-    const sample=(px,py)=>{
-      const gx = ox + px/W*sw, gy = oy + py/H*sh;
-      const i=Math.min(GW-2,Math.max(0,Math.floor(gx))), j=Math.min(GH-2,Math.max(0,Math.floor(gy)));
-      const fx=gx-i, fy=gy-j;
-      const a=field[j*GW+i], b=field[j*GW+i+1], c=field[(j+1)*GW+i], d=field[(j+1)*GW+i+1];
-      return lerp(lerp(a,b,fx),lerp(c,d,fx),fy);
-    };
-
-    // image: asinh stretch through a 3-stop colormap
-    const step = Math.max(1, Math.round(2*dpr));
-    const iw = Math.ceil(W/step), ih = Math.ceil(H/step);
-    const img = ctx.createImageData(iw, ih);
-    for(let y=0;y<ih;y++) for(let x=0;x<iw;x++){
-      const v = sample(x*step, y*step);
-      let t = Math.asinh(Math.max(0,v+.08)*6)/Math.asinh(6*3.2); t=Math.min(1,Math.max(0,t));
-      let c;
-      if(t<.55){ const u=t/.55; c=[lerp(lo[0],mid[0],u),lerp(lo[1],mid[1],u),lerp(lo[2],mid[2],u)]; }
-      else { const u=(t-.55)/.45; c=[lerp(mid[0],hi[0],u),lerp(mid[1],hi[1],u),lerp(mid[2],hi[2],u)]; }
-      const k=(y*iw+x)*4; img.data[k]=c[0]; img.data[k+1]=c[1]; img.data[k+2]=c[2]; img.data[k+3]=255;
-    }
-    const off = document.createElement('canvas'); off.width=iw; off.height=ih; off.getContext('2d').putImageData(img,0,0);
-    ctx.imageSmoothingEnabled = true; ctx.drawImage(off,0,0,W,H);
-
-    // contours (marching squares) at 3σ·√2^n
-    const sigma=.11, cell=Math.max(4, Math.round(5*dpr));
-    const nx=Math.ceil(W/cell)+1, ny=Math.ceil(H/cell)+1;
-    const g=new Float32Array(nx*ny);
-    for(let j=0;j<ny;j++) for(let i=0;i<nx;i++) g[j*nx+i]=sample(Math.min(W-1,i*cell), Math.min(H-1,j*cell));
-    ctx.strokeStyle=contourCol; ctx.lineWidth=Math.max(1,.9*dpr); ctx.lineJoin='round';
-    for(let n=0;n<9;n++){
-      const L = 3*sigma*Math.pow(Math.SQRT2*1.414, n);
-      ctx.globalAlpha = n===0 ? .55 : .85;
-      ctx.beginPath();
-      for(let j=0;j<ny-1;j++) for(let i=0;i<nx-1;i++){
-        const a=g[j*nx+i], b=g[j*nx+i+1], c=g[(j+1)*nx+i+1], d=g[(j+1)*nx+i];
-        const idx=(a>L?8:0)|(b>L?4:0)|(c>L?2:0)|(d>L?1:0);
-        if(idx===0||idx===15) continue;
-        const x0=i*cell, y0=j*cell;
-        const T=[x0+cell*(L-a)/(b-a), y0], R=[x0+cell, y0+cell*(L-b)/(c-b)], B=[x0+cell*(L-d)/(c-d), y0+cell], Lf=[x0, y0+cell*(L-a)/(d-a)];
-        const seg=(p,q)=>{ ctx.moveTo(p[0],p[1]); ctx.lineTo(q[0],q[1]); };
-        switch(idx){
-          case 1: case 14: seg(Lf,B); break;
-          case 2: case 13: seg(B,R); break;
-          case 3: case 12: seg(Lf,R); break;
-          case 4: case 11: seg(T,R); break;
-          case 5: seg(Lf,T); seg(B,R); break;
-          case 6: case 9: seg(T,B); break;
-          case 7: case 8: seg(Lf,T); break;
-          case 10: seg(T,R); seg(Lf,B); break;
-        }
-      }
-      ctx.stroke();
-    }
-    ctx.globalAlpha=1;
-
-    // overlays: beam, scale bar, labels
-    const pad = 14*dpr, fs = Math.round(10.5*dpr);
-    ctx.font = `${fs}px ${monoFont}`;
-    ctx.fillStyle='rgba(255,255,255,.88)'; ctx.strokeStyle='rgba(255,255,255,.88)';
-    // beam
-    ctx.save(); ctx.translate(pad+12*dpr, H-pad-12*dpr); ctx.rotate(-.5);
-    ctx.beginPath(); ctx.ellipse(0,0,10*dpr,6*dpr,0,0,Math.PI*2); ctx.globalAlpha=.35; ctx.fill(); ctx.globalAlpha=1; ctx.lineWidth=1*dpr; ctx.stroke(); ctx.restore();
-    // scale bar
-    const sbw = Math.round(Math.min(W*.16, 120*dpr));
-    const sx = W-pad-sbw, sy = H-pad-4*dpr;
-    ctx.lineWidth=2*dpr; ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(sx+sbw,sy); ctx.stroke();
-    ctx.textAlign='center'; ctx.textBaseline='bottom'; ctx.fillText('500 kpc', sx+sbw/2, sy-5*dpr);
-    // header labels
-    ctx.textAlign='left'; ctx.textBaseline='top';
-    ctx.fillText('LOFAR LBA · 54 MHz · synthetic', pad, pad);
-    ctx.textAlign='right';
-    ctx.fillText('σ = 1.0 mJy/beam', W-pad, pad);
-  }
-
-  let raf=0;
-  const redraw=()=>{ cancelAnimationFrame(raf); raf=requestAnimationFrame(draw); };
-  try{ new ResizeObserver(redraw).observe(canvas); }catch(e){ window.addEventListener('resize', redraw); }
-  try{ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redraw); }catch(e){}
-  try{ new MutationObserver(redraw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']}); }catch(e){}
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);
-  draw();
-
   /* ---------- Publication filter ---------- */
   const tabs = document.querySelectorAll('.tabs button');
   const pubs = document.querySelectorAll('#publist .pub');
