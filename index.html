@@ -23,6 +23,7 @@
   "@type": "Person",
   "name": "Thomas Pasini",
   "url": "https://tpasini.github.io/",
+  "image": "https://tpasini.github.io/assets/thomas-pasini.webp",
   "jobTitle": "Data Scientist in Astrophysics",
   "email": "mailto:thomas.pasini@inaf.it",
   "worksFor": {
@@ -109,9 +110,9 @@ a:hover{text-decoration-thickness:2px}
 
 /* Identity rail */
 .rail{position:sticky; top:calc(env(safe-area-inset-top, 0px) + 32px); align-self:start; display:flex; flex-direction:column; gap:28px; min-width:0}
-.mark{display:flex; align-items:center; gap:12px}
-.mark svg{flex:none}
-.mark span{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); letter-spacing:.04em}
+.mark{display:inline-block; line-height:0}
+.mark img{height:46px; width:auto}
+.portrait{width:132px; height:132px; border-radius:50%; object-fit:cover; box-shadow:0 0 0 3px var(--bg), 0 0 0 4px var(--accent), 0 10px 30px -10px rgba(0,0,0,.4)}
 .rail h1{font-family:var(--f-display); font-weight:700; font-size:1.7rem; line-height:1.1; margin:0; letter-spacing:-.01em}
 .rail .role{margin:6px 0 0; color:var(--muted); font-size:var(--s-sm); line-height:1.45}
 .nav{display:flex; flex-direction:column; gap:2px; border-left:1px solid var(--rule)}
@@ -325,21 +326,14 @@ img{max-width:100%}
 <body>
 <div class="shell">
   <aside class="rail">
-    <div>
-      <div class="mark">
-        <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
-          <circle cx="17" cy="17" r="15.5" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
-          <circle cx="17" cy="17" r="10" fill="none" stroke="var(--accent)" stroke-width="1.2" opacity=".7"/>
-          <circle cx="17" cy="17" r="4.5" fill="none" stroke="var(--accent)" stroke-width="1.2" opacity=".45"/>
-          <circle cx="17" cy="17" r="1.6" fill="var(--accent)"/>
-        </svg>
-        <span>IRA – INAF · Bologna</span>
-      </div>
-    </div>
+    <img class="portrait" src="assets/thomas-pasini.webp" width="320" height="320" alt="Portrait of Thomas Pasini">
     <div>
       <h1>Thomas Pasini</h1>
       <p class="role">Data Scientist in Astrophysics<br>Istituto di Radioastronomia, INAF<br>ERC Consolidator project ULU</p>
     </div>
+    <a class="mark" href="https://www.inaf.it/en" target="_blank" rel="noopener" aria-label="INAF – Istituto Nazionale di Astrofisica">
+        <picture><source srcset="assets/inaf-logo-dark.png" media="(prefers-color-scheme: dark)"><img src="assets/inaf-logo.png" width="640" height="255" alt="INAF – Istituto Nazionale di Astrofisica"></picture>
+      </a>
     <nav class="nav" aria-label="Sections">
       <a href="#about">About</a>
       <a href="#research">Research</a>
