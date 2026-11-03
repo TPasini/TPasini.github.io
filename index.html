@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thomas Pasini · Radio astronomer, IRA–INAF Bologna</title>
+<meta name="description" content="Thomas Pasini is a radio astronomer and data scientist at the Istituto di Radioastronomia (INAF) in Bologna, working on AGN feedback, diffuse radio emission in galaxy clusters and groups, and ultra-low-frequency LOFAR observations.">
+<meta name="author" content="Thomas Pasini">
+<link rel="canonical" href="https://tpasini.github.io/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Thomas Pasini · Radio astronomer, IRA–INAF Bologna">
+<meta property="og:description" content="AGN feedback, diffuse radio emission and ultra-low-frequency LOFAR observations of galaxy clusters and groups.">
+<meta property="og:url" content="https://tpasini.github.io/">
+<meta property="profile:first_name" content="Thomas">
+<meta property="profile:last_name" content="Pasini">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Ccircle cx='17' cy='17' r='15' fill='%230B6B75'/%3E%3Ccircle cx='17' cy='17' r='9.5' fill='none' stroke='white' stroke-width='1.6' opacity='.8'/%3E%3Ccircle cx='17' cy='17' r='3' fill='white'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Thomas Pasini",
+  "url": "https://tpasini.github.io/",
+  "jobTitle": "Data Scientist in Astrophysics",
+  "email": "mailto:thomas.pasini@inaf.it",
+  "worksFor": {
+    "@type": "ResearchOrganization",
+    "name": "Istituto di Radioastronomia (IRA), INAF",
+    "address": {"@type": "PostalAddress", "streetAddress": "Via Piero Gobetti 101", "postalCode": "40129", "addressLocality": "Bologna", "addressCountry": "IT"}
+  },
+  "alumniOf": {"@type": "CollegeOrUniversity", "name": "Universität Hamburg"},
+  "knowsAbout": ["Radio astronomy", "AGN feedback", "Galaxy clusters", "Galaxy groups", "LOFAR", "Diffuse radio emission", "Data science"],
+  "sameAs": [
+    "https://github.com/TPasini",
+    "https://www.linkedin.com/in/thomas-pasini-389b05181/",
+    "https://sites.google.com/view/thomaspasini-astro/home-page"
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: two columns on desktop — a sticky identity rail (name, nav, links) beside a single reading column;
+   the hero carries a synthetic radio map drawn like a FITS image (contours, beam, scale bar). Stacks to one column on phones. */
+:root{
+  --bg:#F5F7F8;
+  --surface:#FFFFFF;
+  --ink:#131A20;
+  --muted:#56616B;
+  --rule:#D9DFE3;
+  --accent:#0B6B75;
+  --accent-soft:#E1EEEF;
+  --map-lo:#0D1B24;
+  --map-mid:#1F6F78;
+  --map-hi:#F2B65A;
+  --map-contour:rgba(255,255,255,.72);
+  --f-display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --s-xs:.78rem; --s-sm:.9rem; --s-base:1.06rem; --s-md:1.25rem; --s-lg:1.6rem; --s-xl:clamp(2.1rem,4.4vw,3.1rem);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1317; --surface:#151C21; --ink:#E5EAED; --muted:#98A4AD; --rule:#26313A;
+    --accent:#5FC3CB; --accent-soft:#16303A;
+    --map-lo:#071016; --map-mid:#1E7A83; --map-hi:#F4C06A; --map-contour:rgba(255,255,255,.62);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1317; --surface:#151C21; --ink:#E5EAED; --muted:#98A4AD; --rule:#26313A;
+  --accent:#5FC3CB; --accent-soft:#16303A;
+  --map-lo:#071016; --map-mid:#1E7A83; --map-hi:#F4C06A; --map-contour:rgba(255,255,255,.62);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--f-body); font-size:var(--s-base); line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent); text-decoration-thickness:1px; text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+
+.shell{
+  max-width:1180px; margin:0 auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:clamp(24px,5vw,56px);
+  display:grid; grid-template-columns:260px minmax(0,1fr); gap:clamp(32px,5vw,72px);
+}
+
+/* Identity rail */
+.rail{position:sticky; top:calc(env(safe-area-inset-top, 0px) + 32px); align-self:start; display:flex; flex-direction:column; gap:28px; min-width:0}
+.mark{display:flex; align-items:center; gap:12px}
+.mark svg{flex:none}
+.mark span{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); letter-spacing:.04em}
+.rail h1{font-family:var(--f-display); font-weight:700; font-size:1.7rem; line-height:1.1; margin:0; letter-spacing:-.01em}
+.rail .role{margin:6px 0 0; color:var(--muted); font-size:var(--s-sm); line-height:1.45}
+.nav{display:flex; flex-direction:column; gap:2px; border-left:1px solid var(--rule)}
+.nav a{font-family:var(--f-display); font-weight:500; font-size:var(--s-sm); color:var(--muted); text-decoration:none; padding:5px 0 5px 14px; margin-left:-1px; border-left:2px solid transparent}
+.nav a:hover{color:var(--ink)}
+.nav a.on{color:var(--ink); border-left-color:var(--accent)}
+.links{display:flex; flex-direction:column; gap:8px; font-family:var(--f-display); font-size:var(--s-sm)}
+.links a{display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:var(--ink)}
+.links a:hover{color:var(--accent)}
+.links svg{width:16px; height:16px; flex:none; fill:none; stroke:currentColor; stroke-width:1.6}
+
+/* Main column */
+main{min-width:0; display:flex; flex-direction:column; gap:clamp(56px,8vw,96px)}
+section{scroll-margin-top:24px}
+.eyebrow{font-family:var(--f-mono); font-size:var(--s-xs); text-transform:uppercase; letter-spacing:.12em; color:var(--accent); margin:0 0 14px}
+h2{font-family:var(--f-display); font-weight:600; font-size:var(--s-lg); line-height:1.2; margin:0 0 20px; text-wrap:balance; letter-spacing:-.005em}
+h3{font-family:var(--f-display); font-weight:600; font-size:var(--s-md); line-height:1.3; margin:0; text-wrap:balance}
+p{margin:0}
+.prose{max-width:65ch; display:flex; flex-direction:column; gap:1em}
+
+/* Hero */
+.hero{display:flex; flex-direction:column; gap:28px}
+.hero-title{font-family:var(--f-display); font-weight:700; font-size:var(--s-xl); line-height:1.08; letter-spacing:-.02em; margin:0; max-width:20ch; text-wrap:balance}
+.hero-title em{font-style:normal; color:var(--accent)}
+.lede{font-size:1.15rem; color:var(--muted); max-width:60ch}
+.figure{margin:0; display:flex; flex-direction:column; gap:10px}
+.mapwrap{position:relative; width:100%; max-width:100%; aspect-ratio:16/8; background:var(--map-lo); border-radius:6px; overflow:hidden}
+.mapwrap canvas{display:block; width:100%; height:100%}
+.figure figcaption{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); line-height:1.5}
+
+.facts{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule)}
+.fact{padding:16px 16px 16px 0; display:flex; flex-direction:column; gap:4px; min-width:0}
+.fact + .fact{padding-left:16px; border-left:1px solid var(--rule)}
+.fact b{font-family:var(--f-display); font-weight:600; font-size:1.35rem; font-variant-numeric:tabular-nums; line-height:1.2}
+.fact span{font-size:var(--s-sm); color:var(--muted); line-height:1.35}
+
+/* Research */
+.areas{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px 40px}
+.area{display:flex; flex-direction:column; gap:8px; min-width:0}
+.area .band{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); letter-spacing:.02em}
+.area p{color:var(--ink); font-size:1rem}
+.area .refs{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted)}
+.area .refs a{color:var(--muted)}
+.area .refs a:hover{color:var(--accent)}
+
+/* Publications */
+.pubhead{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:12px 24px; margin-bottom:8px}
+.pubhead h2{margin:0}
+.tabs{display:inline-flex; border:1px solid var(--rule); border-radius:999px; padding:3px; gap:2px; background:var(--surface)}
+.tabs button{font:500 var(--s-sm)/1 var(--f-display); color:var(--muted); background:none; border:0; padding:8px 14px; border-radius:999px; cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--accent-soft); color:var(--ink)}
+.publist{list-style:none; margin:0; padding:0}
+.pub{display:grid; grid-template-columns:4.5rem minmax(0,1fr); gap:16px; padding:18px 0; border-bottom:1px solid var(--rule)}
+.pub .yr{font-family:var(--f-mono); font-size:var(--s-sm); color:var(--muted); font-variant-numeric:tabular-nums; padding-top:2px}
+.pub .t{font-family:var(--f-display); font-weight:500; font-size:1.04rem; line-height:1.35; color:var(--ink); text-decoration:none}
+.pub a.t:hover{color:var(--accent)}
+.pub .meta{margin-top:4px; font-size:var(--s-sm); color:var(--muted); line-height:1.45}
+.pub .meta .me{color:var(--ink); font-weight:600}
+.pub .tags{margin-top:8px; display:flex; flex-wrap:wrap; gap:6px}
+.tag{font-family:var(--f-mono); font-size:.72rem; color:var(--muted); border:1px solid var(--rule); border-radius:4px; padding:2px 7px}
+.tag.lead{color:var(--accent); border-color:currentColor}
+a.tag{text-decoration:none}
+a.tag:hover{color:var(--accent); border-color:var(--accent)}
+.more{margin-top:20px; font-family:var(--f-display); font-size:var(--s-sm)}
+
+/* Career */
+.timeline{list-style:none; margin:0; padding:0; display:flex; flex-direction:column}
+.step{display:grid; grid-template-columns:4.5rem minmax(0,1fr); gap:16px; padding:16px 0; border-bottom:1px solid var(--rule)}
+.step:first-child{border-top:1px solid var(--rule)}
+.step .yr{font-family:var(--f-mono); font-size:var(--s-sm); color:var(--muted)}
+.step p{font-size:1rem; color:var(--muted); margin-top:4px}
+.step .docs{margin-top:8px; display:flex; flex-wrap:wrap; gap:6px 16px; font-family:var(--f-display); font-size:var(--s-sm)}
+
+/* Skills */
+.skills{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px}
+.skill{display:flex; flex-direction:column; gap:10px; min-width:0}
+.skill h3{font-size:1.02rem}
+.skill ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:6px; font-size:.98rem; color:var(--muted)}
+.skill li{padding-left:14px; position:relative}
+.skill li::before{content:""; position:absolute; left:0; top:.68em; width:6px; height:1px; background:var(--accent)}
+
+/* Contact */
+.contact{background:var(--surface); border:1px solid var(--rule); border-radius:8px; padding:clamp(20px,4vw,36px); display:flex; flex-direction:column; gap:18px}
+.addr{display:flex; flex-wrap:wrap; align-items:center; gap:10px}
+.addr code{font-family:var(--f-mono); font-size:1rem; background:var(--accent-soft); color:var(--ink); padding:8px 12px; border-radius:6px; user-select:all; word-break:break-all}
+.btn{font:500 var(--s-sm)/1 var(--f-display); color:var(--ink); background:transparent; border:1px solid var(--rule); border-radius:6px; padding:9px 14px; cursor:pointer}
+.btn:hover{border-color:var(--accent); color:var(--accent)}
+.contact .where{color:var(--muted); font-size:1rem}
+.contact .links{flex-direction:row; flex-wrap:wrap; gap:10px 22px}
+
+footer{font-family:var(--f-mono); font-size:var(--s-xs); color:var(--muted); border-top:1px solid var(--rule); padding-top:20px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px}
+
+@media (max-width: 920px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .rail{position:static; gap:18px}
+  .nav{flex-direction:row; flex-wrap:wrap; border-left:0; border-bottom:1px solid var(--rule); gap:4px 18px}
+  .nav a{padding:6px 0; margin:0 0 -1px; border-left:0; border-bottom:2px solid transparent}
+  .nav a.on{border-bottom-color:var(--accent)}
+  .links{flex-direction:row; flex-wrap:wrap; gap:8px 20px}
+  .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width: 640px){
+  .areas{grid-template-columns:minmax(0,1fr)}
+  .skills{grid-template-columns:minmax(0,1fr)}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fact:nth-child(3){padding-left:0; border-left:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--rule)}
+  .mapwrap{aspect-ratio:4/3}
+  .pub,.step{grid-template-columns:minmax(0,1fr); gap:4px}
+}
+
+/* base reset */
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="rail">
+    <div>
+      <div class="mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <circle cx="17" cy="17" r="15.5" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+          <circle cx="17" cy="17" r="10" fill="none" stroke="var(--accent)" stroke-width="1.2" opacity=".7"/>
+          <circle cx="17" cy="17" r="4.5" fill="none" stroke="var(--accent)" stroke-width="1.2" opacity=".45"/>
+          <circle cx="17" cy="17" r="1.6" fill="var(--accent)"/>
+        </svg>
+        <span>IRA – INAF · Bologna</span>
+      </div>
+    </div>
+    <div>
+      <h1>Thomas Pasini</h1>
+      <p class="role">Data Scientist in Astrophysics<br>Istituto di Radioastronomia, INAF</p>
+    </div>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#career">Career</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="links">
+      <a href="https://drive.google.com/file/d/1xoQ915ogUfiDRoeVMJgGbH7BmwfpOrnB/view?usp=sharing" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M9.5 1.5V5H13M6 8h5M6 10.5h5"/></svg>Curriculum Vitae</a>
+      <a href="https://ui.adsabs.harvard.edu/search/q=author%3A%22Pasini%2C%20Thomas%22&sort=date%20desc%2C%20bibcode%20desc&fq=database%3Aastronomy" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16"><path d="M2.5 2.5h11v11h-11z"/><path d="M5 5.5h6M5 8h6M5 10.5h4"/></svg>NASA ADS</a>
+      <a href="https://github.com/TPasini" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16"><path d="M5.5 4.5 2 8l3.5 3.5M10.5 4.5 14 8l-3.5 3.5"/></svg>GitHub</a>
+      <a href="https://www.linkedin.com/in/thomas-pasini-389b05181/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16"><path d="M2.5 2.5h11v11h-11z"/><path d="M5.2 7v4.5M5.2 5v.1M7.8 11.5V7m0 1.8c0-1 .8-1.8 1.8-1.8s1.6.8 1.6 1.8v2.7"/></svg>LinkedIn</a>
+    </div>
+  </aside>
+
+  <main>
+    <section id="about" class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">Radio astronomy · Galaxy clusters &amp; groups</p>
+      <h2 id="hero-title" class="hero-title">How black holes heat the hot gas of galaxy groups and clusters, seen at the <em>lowest radio frequencies</em>.</h2>
+      <div class="prose lede">
+        <p>I am a radio astronomer and data scientist at the Istituto di Radioastronomia (INAF) in Bologna. I study feedback from active galactic nuclei (AGN), non-thermal emission in galaxy clusters and groups, and the faint, steep-spectrum radio sources that only show up below 100 MHz.</p>
+      </div>
+      <figure class="figure">
+        <div class="mapwrap"><canvas id="map" role="img" aria-label="Illustrative synthetic radio map of a galaxy cluster with a diffuse halo, a tailed radio galaxy and compact sources, drawn with contours, a beam ellipse and a scale bar."></canvas></div>
+        <figcaption>Illustrative synthetic map, not real data. Diffuse halo, a tailed radio galaxy and compact sources; contours start at 3σ and double at each level; beam shown bottom left.</figcaption>
+      </figure>
+      <div class="prose">
+        <p>My work combines low-frequency radio observations from LOFAR with X-ray surveys such as eROSITA. I build Python pipelines for calibration and large-scale data processing, apply statistical analysis to survey samples, and lead projects in multi-institutional international collaborations, from defining requirements to delivering results.</p>
+      </div>
+      <div class="facts" aria-label="Key figures">
+<!-- FACTS:START -->
+        <div class="fact"><b>1,400+</b><span>citations</span></div>
+        <div class="fact"><b>PhD 2022</b><span>Universität Hamburg</span></div>
+        <div class="fact"><b>54 MHz</b><span>LOFAR LBA calibration pipeline</span></div>
+        <div class="fact"><b>LOFAR · eROSITA</b><span>main survey datasets</span></div>
+<!-- FACTS:END -->
+      </div>
+    </section>
+
+    <section id="research" aria-labelledby="research-h">
+      <p class="eyebrow">Research</p>
+      <h2 id="research-h">Research areas</h2>
+      <div class="areas">
+        <article class="area">
+          <span class="band">X-ray + radio · groups &amp; clusters</span>
+          <h3>AGN feedback</h3>
+          <p>How radio-loud AGN at the centres of groups and clusters keep the hot intracluster gas from cooling. I measured how the diffuse X-ray luminosity scales with the radio power of the central AGN, and studied the brightest cluster galaxies of the eROSITA eFEDS field with LOFAR.</p>
+          <span class="refs"><a href="https://arxiv.org/abs/2007.04999" target="_blank" rel="noopener">2020</a> · <a href="https://arxiv.org/abs/2105.08727" target="_blank" rel="noopener">2021</a> · <a href="https://arxiv.org/abs/2106.14524" target="_blank" rel="noopener">2022</a></span>
+        </article>
+        <article class="area">
+          <span class="band">LOFAR LBA · 30–80 MHz</span>
+          <h3>Ultra-low-frequency radio astronomy</h3>
+          <p>Observing below 100 MHz exposes old, steep-spectrum plasma that higher frequencies miss. I developed a calibration pipeline for LOFAR Low Band Antenna data at 54 MHz and use LoLSS together with LoTSS at 144 MHz.</p>
+          <span class="refs"><a href="https://arxiv.org/abs/2205.12281" target="_blank" rel="noopener">2022</a> · <a href="https://arxiv.org/abs/2406.12005" target="_blank" rel="noopener">2024</a></span>
+        </article>
+        <article class="area">
+          <span class="band">Radio halos · relics · bridges</span>
+          <h3>Diffuse cluster radio emission</h3>
+          <p>Radio halos and other diffuse sources trace turbulence and particle re-acceleration in the intracluster medium. I measured the ultra-low-frequency spectral indices of a sample of radio halos and studied re-acceleration in Abell 1550.</p>
+          <span class="refs"><a href="https://arxiv.org/abs/2205.12281" target="_blank" rel="noopener">2022</a> · <a href="https://arxiv.org/abs/2406.12005" target="_blank" rel="noopener">2024</a></span>
+        </article>
+        <article class="area">
+          <span class="band">Galaxy groups · non-thermal</span>
+          <h3>Non-thermal emission in galaxy groups</h3>
+          <p>Groups are the most common environment for galaxies, but their non-thermal emission is faint and poorly sampled. I study it at extremely low frequencies, as in the group A1213, and the kinematics and scaling relations of group radio galaxies.</p>
+          <span class="refs"><a href="https://arxiv.org/abs/2105.08727" target="_blank" rel="noopener">2021</a> · <a href="https://arxiv.org/abs/2411.16853" target="_blank" rel="noopener">2025</a></span>
+        </article>
+        <article class="area">
+          <span class="band">X-ray · radio · optical</span>
+          <h3>Multiphase gas</h3>
+          <p>Hot, warm and cold gas phases together show how AGN feedback cycles operate, including in systems where the central galaxy is offset from the X-ray peak.</p>
+        </article>
+        <article class="area">
+          <span class="band">Pipelines · statistics · surveys</span>
+          <h3>Data science for large surveys</h3>
+          <p>Survey-scale radio and X-ray samples call for reproducible pipelines. I write Python tools for calibration, source characterisation and statistical analysis of large datasets.</p>
+          <span class="refs"><a href="https://github.com/TPasini" target="_blank" rel="noopener">github.com/TPasini</a></span>
+        </article>
+      </div>
+    </section>
+
+    <section id="publications" aria-labelledby="pub-h">
+      <p class="eyebrow">Publications</p>
+      <div class="pubhead">
+        <h2 id="pub-h">Refereed publications</h2>
+        <div class="tabs" role="tablist" aria-label="Filter publications">
+          <button id="tab-lead" role="tab" aria-selected="true" data-filter="lead">First author</button>
+          <button id="tab-co" role="tab" aria-selected="false" data-filter="co">Co-author</button>
+          <button id="tab-all" role="tab" aria-selected="false" data-filter="all">All</button>
+        </div>
+      </div>
+      <ol class="publist" id="publist">
+<!-- PUBS:START -->
+        <li class="pub" data-kind="lead"><span class="yr">2025</span><div>
+          <a class="t" href="https://arxiv.org/abs/2411.16853" target="_blank" rel="noopener">Non-thermal emission in galaxy groups at extremely low frequency: the case of A1213</a>
+          <div class="meta"><span class="me">Pasini, T.</span>, Mahatma, V. H., Brienza, M., et al. · Astronomy &amp; Astrophysics</div>
+          <div class="tags"><span class="tag lead">first author</span><span class="tag">arXiv:2411.16853</span></div></div></li>
+        <li class="pub" data-kind="lead"><span class="yr">2024</span><div>
+          <a class="t" href="https://arxiv.org/abs/2406.12005" target="_blank" rel="noopener">Ultra-low-frequency LOFAR spectral indices of cluster radio halos</a>
+          <div class="meta"><span class="me">Pasini, T.</span>, de Gasperin, F., Brüggen, M., et al. · Astronomy &amp; Astrophysics, Letter</div>
+          <div class="tags"><span class="tag lead">first author</span><span class="tag">arXiv:2406.12005</span></div></div></li>
+        <li class="pub" data-kind="lead"><span class="yr">2022</span><div>
+          <a class="t" href="https://arxiv.org/abs/2205.12281" target="_blank" rel="noopener">Particle re-acceleration and diffuse radio sources in the galaxy cluster Abell 1550</a>
+          <div class="meta"><span class="me">Pasini, T.</span>, Edler, H. W., Brüggen, M., et al. · Astronomy &amp; Astrophysics</div>
+          <div class="tags"><span class="tag lead">first author</span><span class="tag">arXiv:2205.12281</span></div></div></li>
+        <li class="pub" data-kind="lead"><span class="yr">2022</span><div>
+          <a class="t" href="https://arxiv.org/abs/2106.14524" target="_blank" rel="noopener">The eROSITA Final Equatorial-Depth Survey (eFEDS): LOFAR view of brightest cluster galaxies and AGN feedback</a>
+          <div class="meta"><span class="me">Pasini, T.</span>, Brüggen, M., Hoang, D. N., et al. · Astronomy &amp; Astrophysics</div>
+          <div class="tags"><span class="tag lead">first author</span><span class="tag">arXiv:2106.14524</span></div></div></li>
+        <li class="pub" data-kind="lead"><span class="yr">2021</span><div>
+          <a class="t" href="https://arxiv.org/abs/2105.08727" target="_blank" rel="noopener">Radio galaxies in galaxy groups: kinematics, scaling relations and AGN feedback</a>
+          <div class="meta"><span class="me">Pasini, T.</span>, Finoguenov, A., Brüggen, M., et al. · Monthly Notices of the Royal Astronomical Society</div>
+          <div class="tags"><span class="tag lead">first author</span><span class="tag">arXiv:2105.08727</span></div></div></li>
+        <li class="pub" data-kind="lead"><span class="yr">2020</span><div>
+          <a class="t" href="https://arxiv.org/abs/2007.04999" target="_blank" rel="noopener">The relation between the diffuse X-ray luminosity and the radio power of the central AGN in galaxy groups</a>
+          <div class="meta"><span class="me">Pasini, T.</span>, Brüggen, M., de Gasperin, F., Bîrzan, L., et al. · Monthly Notices of the Royal Astronomical Society</div>
+          <div class="tags"><span class="tag lead">first author</span><span class="tag">arXiv:2007.04999</span></div></div></li>
+
+        <li class="pub" data-kind="co" hidden><span class="yr">2025</span><div>
+          <a class="t" href="https://ui.adsabs.harvard.edu/search/q=title%3A%22A%20view%20of%20the%20CIZA%20J2242.8%2B5301%20galaxy%20cluster%20at%20very%20low%20radio%20frequencies%22" target="_blank" rel="noopener">A view of the CIZA J2242.8+5301 galaxy cluster at very low radio frequencies</a>
+          <div class="meta">Lusetti, G., Brüggen, M., Edler, H. W., et al. (incl. <span class="me">Pasini, T.</span>) · Astronomy &amp; Astrophysics</div></div></li>
+        <li class="pub" data-kind="co" hidden><span class="yr">2024</span><div>
+          <a class="t" href="https://ui.adsabs.harvard.edu/search/q=title%3A%22Abell%200399-Abell%200401%20radio%20bridge%20spectral%20index%22" target="_blank" rel="noopener">Abell 0399–Abell 0401 radio bridge spectral index: first multi-frequency detection</a>
+          <div class="meta">Pignataro, G. V., Bonafede, A., Bernardi, G., et al. (incl. <span class="me">Pasini, T.</span>) · Astronomy &amp; Astrophysics</div></div></li>
+        <li class="pub" data-kind="co" hidden><span class="yr">2024</span><div>
+          <a class="t" href="https://arxiv.org/abs/2312.12855" target="_blank" rel="noopener">Deep Chandra observations of Abell 2495: a possible sloshing-regulated feedback cycle in a triple-offset galaxy cluster</a>
+          <div class="meta">Rosignoli, L., Ubertosi, F., Gitti, M., Brighenti, F., <span class="me">Pasini, T.</span>, et al. · The Astrophysical Journal</div></div></li>
+        <li class="pub" data-kind="co" hidden><span class="yr">2023</span><div>
+          <a class="t" href="https://ui.adsabs.harvard.edu/search/q=title%3A%22The%20Planck%20clusters%20in%20the%20LOFAR%20sky.%20V%22" target="_blank" rel="noopener">The Planck clusters in the LOFAR sky. V. LoTSS-DR2: mass–radio halo power correlation at low frequency</a>
+          <div class="meta">Cuciti, V., Cassano, R., Sereno, M., et al. (incl. <span class="me">Pasini, T.</span>) · Astronomy &amp; Astrophysics</div></div></li>
+        <li class="pub" data-kind="co" hidden><span class="yr">2023</span><div>
+          <a class="t" href="https://ui.adsabs.harvard.edu/search/q=title%3A%22Life%20cycle%20of%20cosmic-ray%20electrons%20in%20the%20intracluster%20medium%22" target="_blank" rel="noopener">Life cycle of cosmic-ray electrons in the intracluster medium</a>
+          <div class="meta">Vazza, F., Wittor, D., Di Federico, L., et al. (incl. <span class="me">Pasini, T.</span>) · Astronomy &amp; Astrophysics</div></div></li>
+        <li class="pub" data-kind="co" hidden><span class="yr">2023</span><div>
+          <a class="t" href="https://ui.adsabs.harvard.edu/search/q=title%3A%22A%20search%20for%20intercluster%20filaments%20with%20LOFAR%20and%20eROSITA%22" target="_blank" rel="noopener">A search for intercluster filaments with LOFAR and eROSITA</a>
+          <div class="meta">Hoang, D. N., Brüggen, M., Zhang, X., et al. (incl. <span class="me">Pasini, T.</span>) · Monthly Notices of the Royal Astronomical Society</div></div></li>
+        <li class="pub" data-kind="co" hidden><span class="yr">2022</span><div>
+          <a class="t" href="https://ui.adsabs.harvard.edu/search/q=title%3A%22The%20galaxy%20group%20NGC%20507%3A%20Newly%20detected%20AGN%20remnant%20plasma%22" target="_blank" rel="noopener">The galaxy group NGC 507: newly detected AGN remnant plasma transported by sloshing</a>
+          <div class="meta">Brienza, M., Lovisari, L., Rajpurohit, K., et al. (incl. <span class="me">Pasini, T.</span>) · Astronomy &amp; Astrophysics</div></div></li>
+<!-- PUBS:END -->
+      </ol>
+      <p class="more"><a href="https://ui.adsabs.harvard.edu/search/q=author%3A%22Pasini%2C%20Thomas%22&sort=date%20desc%2C%20bibcode%20desc&fq=database%3Aastronomy" target="_blank" rel="noopener">Full, up-to-date publication list on NASA ADS →</a></p>
+    </section>
+
+    <section id="career" aria-labelledby="career-h">
+      <p class="eyebrow">Career</p>
+      <h2 id="career-h">Career &amp; education</h2>
+      <ol class="timeline">
+        <li class="step"><span class="yr">Now</span><div>
+          <h3>Data Scientist in Astrophysics</h3>
+          <p>Istituto di Radioastronomia (IRA), INAF, Bologna. Low-frequency radio studies of galaxy clusters and groups; data pipelines and project coordination in international collaborations.</p></div></li>
+        <li class="step"><span class="yr">2022</span><div>
+          <h3>PhD in Physics, Universität Hamburg</h3>
+          <p>Thesis: <em>Multi-wavelength studies of AGN feedback and non-thermal emission in galaxy clusters and groups</em>. Advisors: Marcus Brüggen and Francesco de Gasperin. Based on five first-author papers, combining eROSITA and LOFAR data with statistical methods and simulations.</p>
+          <div class="docs">
+            <a href="https://drive.google.com/file/d/13IHh1c74SinNhfhT8RvL3R9JYaTPRPAj/view?usp=sharing" target="_blank" rel="noopener">Read the thesis</a>
+            <a href="https://ediss.sub.uni-hamburg.de/handle/ediss/9803" target="_blank" rel="noopener">University repository</a>
+          </div></div></li>
+      </ol>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-h">
+      <p class="eyebrow">Skills</p>
+      <h2 id="skills-h">Methods &amp; tools</h2>
+      <div class="skills">
+        <div class="skill"><h3>Radio interferometry</h3>
+          <ul><li>LOFAR HBA and LBA data reduction</li><li>Direction-dependent calibration</li><li>Low-frequency surveys: LoTSS, LoLSS</li><li>Spectral index and diffuse-emission analysis</li></ul></div>
+        <div class="skill"><h3>Data science</h3>
+          <ul><li>Python data pipelines</li><li>Statistical analysis of survey samples</li><li>Large-scale dataset processing</li><li>Multi-wavelength cross-matching (radio, X-ray, optical)</li></ul></div>
+        <div class="skill"><h3>Project leadership</h3>
+          <ul><li>Leading data-driven projects in multi-institutional collaborations</li><li>Coordinating international, cross-functional teams</li><li>From requirements to delivery</li></ul></div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-h">
+      <p class="eyebrow">Contact</p>
+      <div class="contact">
+        <h2 id="contact-h" style="margin:0">Get in touch</h2>
+        <div class="addr">
+          <code id="email">thomas.pasini@inaf.it</code>
+          <button class="btn" id="copy" type="button">Copy address</button>
+        </div>
+        <p class="where">Istituto di Radioastronomia (IRA) – INAF · Via Piero Gobetti 101, 40129 Bologna, Italy</p>
+        <div class="links">
+          <a href="https://github.com/TPasini" target="_blank" rel="noopener"><svg viewBox="0 0 16 16"><path d="M5.5 4.5 2 8l3.5 3.5M10.5 4.5 14 8l-3.5 3.5"/></svg>GitHub</a>
+          <a href="https://www.linkedin.com/in/thomas-pasini-389b05181/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16"><path d="M2.5 2.5h11v11h-11z"/><path d="M5.2 7v4.5M5.2 5v.1M7.8 11.5V7m0 1.8c0-1 .8-1.8 1.8-1.8s1.6.8 1.6 1.8v2.7"/></svg>LinkedIn</a>
+          <a href="https://drive.google.com/file/d/1xoQ915ogUfiDRoeVMJgGbH7BmwfpOrnB/view?usp=sharing" target="_blank" rel="noopener"><svg viewBox="0 0 16 16"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M9.5 1.5V5H13M6 8h5M6 10.5h5"/></svg>Curriculum Vitae</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Thomas Pasini</span>
+<!-- UPDATED:START -->
+      <span>IRA – INAF · Bologna</span>
+<!-- UPDATED:END -->
+    </footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  /* ---------- Synthetic radio map ---------- */
+  const canvas = document.getElementById('map');
+  function rng(seed){ return function(){ seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function gauss(r){ let u=0,v=0; while(!u) u=r(); while(!v) v=r(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
+
+  // Field on a fixed grid in "sky" units (0..1 x, 0..ar y), built once.
+  const GW = 220, GH = 140;
+  let field = null;
+  function buildField(){
+    const r = rng(54);
+    const f = new Float32Array(GW*GH);
+    const comps = [];
+    // diffuse halo (elliptical, slightly irregular)
+    comps.push({x:.52,y:.50,sx:.17,sy:.12,a:1.0,rot:.35});
+    comps.push({x:.60,y:.44,sx:.09,sy:.07,a:.45,rot:0});
+    comps.push({x:.44,y:.57,sx:.08,sy:.06,a:.35,rot:0});
+    // tailed radio galaxy: core + tail of blobs
+    const tx=.22, ty=.30;
+    comps.push({x:tx,y:ty,sx:.008,sy:.008,a:5.0,rot:0});
+    for(let i=1;i<14;i++){ const s=i/13; comps.push({x:tx+ .16*s + .02*Math.sin(s*5), y:ty + .10*s*s, sx:.012+.02*s, sy:.010+.012*s, a:2.2*(1-s*.8), rot:.5}); }
+    // compact sources
+    [[.80,.22,3],[.86,.74,2.2],[.12,.78,1.8],[.68,.82,1.4],[.34,.16,1.2]].forEach(p=>comps.push({x:p[0],y:p[1],sx:.009,sy:.009,a:p[2],rot:0}));
+    for(let j=0;j<GH;j++){
+      for(let i=0;i<GW;i++){
+        const x=i/(GW-1), y=j/(GH-1);
+        let v=0;
+        for(const c of comps){
+          const dx=x-c.x, dy=y-c.y, cs=Math.cos(c.rot), sn=Math.sin(c.rot);
+          const u=(dx*cs+dy*sn)/c.sx, w=(-dx*sn+dy*cs)/c.sy;
+          v += c.a*Math.exp(-.5*(u*u+w*w));
+        }
+        f[j*GW+i]=v;
+      }
+    }
+    // correlated noise: white noise smoothed by a small box blur
+    const n = new Float32Array(GW*GH); for(let k=0;k<n.length;k++) n[k]=gauss(r);
+    const sm = new Float32Array(GW*GH);
+    for(let j=0;j<GH;j++) for(let i=0;i<GW;i++){
+      let s=0,c=0; for(let dj=-2;dj<=2;dj++) for(let di=-2;di<=2;di++){ const ii=i+di, jj=j+dj; if(ii>=0&&jj>=0&&ii<GW&&jj<GH){ s+=n[jj*GW+ii]; c++; } }
+      sm[j*GW+i]=s/c;
+    }
+    for(let k=0;k<f.length;k++) f[k] += .11*sm[k]*2.2;
+    return f;
+  }
+
+  function hexToRgb(s){
+    s=s.trim();
+    if(s.startsWith('#')){ const h=s.slice(1); const n=parseInt(h.length===3?h.split('').map(c=>c+c).join(''):h,16); return [(n>>16)&255,(n>>8)&255,n&255]; }
+    const m=s.match(/[\d.]+/g); return m?m.slice(0,3).map(Number):[0,0,0];
+  }
+  function lerp(a,b,t){ return a+(b-a)*t; }
+
+  function draw(){
+    if(!canvas) return;
+    if(!field) field = buildField();
+    const css = getComputedStyle(document.documentElement);
+    const lo=hexToRgb(css.getPropertyValue('--map-lo')), mid=hexToRgb(css.getPropertyValue('--map-mid')), hi=hexToRgb(css.getPropertyValue('--map-hi'));
+    const contourCol = css.getPropertyValue('--map-contour').trim() || 'rgba(255,255,255,.7)';
+    const monoFont = (css.getPropertyValue('--f-mono')||'monospace').trim();
+
+    const rect = canvas.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio||1, 2);
+    const W = Math.max(1, Math.round(rect.width*dpr)), H = Math.max(1, Math.round(rect.height*dpr));
+    canvas.width=W; canvas.height=H;
+    const ctx = canvas.getContext('2d');
+
+    // sample field with cover-fit (field aspect GW:GH)
+    const fa = GW/GH, ca = W/H;
+    let sw, sh, ox, oy;
+    if(ca > fa){ sw=GW; sh=GW/ca; ox=0; oy=(GH-sh)/2; } else { sh=GH; sw=GH*ca; oy=0; ox=(GW-sw)/2; }
+    const sample=(px,py)=>{
+      const gx = ox + px/W*sw, gy = oy + py/H*sh;
+      const i=Math.min(GW-2,Math.max(0,Math.floor(gx))), j=Math.min(GH-2,Math.max(0,Math.floor(gy)));
+      const fx=gx-i, fy=gy-j;
+      const a=field[j*GW+i], b=field[j*GW+i+1], c=field[(j+1)*GW+i], d=field[(j+1)*GW+i+1];
+      return lerp(lerp(a,b,fx),lerp(c,d,fx),fy);
+    };
+
+    // image: asinh stretch through a 3-stop colormap
+    const step = Math.max(1, Math.round(2*dpr));
+    const iw = Math.ceil(W/step), ih = Math.ceil(H/step);
+    const img = ctx.createImageData(iw, ih);
+    for(let y=0;y<ih;y++) for(let x=0;x<iw;x++){
+      const v = sample(x*step, y*step);
+      let t = Math.asinh(Math.max(0,v+.08)*6)/Math.asinh(6*3.2); t=Math.min(1,Math.max(0,t));
+      let c;
+      if(t<.55){ const u=t/.55; c=[lerp(lo[0],mid[0],u),lerp(lo[1],mid[1],u),lerp(lo[2],mid[2],u)]; }
+      else { const u=(t-.55)/.45; c=[lerp(mid[0],hi[0],u),lerp(mid[1],hi[1],u),lerp(mid[2],hi[2],u)]; }
+      const k=(y*iw+x)*4; img.data[k]=c[0]; img.data[k+1]=c[1]; img.data[k+2]=c[2]; img.data[k+3]=255;
+    }
+    const off = document.createElement('canvas'); off.width=iw; off.height=ih; off.getContext('2d').putImageData(img,0,0);
+    ctx.imageSmoothingEnabled = true; ctx.drawImage(off,0,0,W,H);
+
+    // contours (marching squares) at 3σ·√2^n
+    const sigma=.11, cell=Math.max(4, Math.round(5*dpr));
+    const nx=Math.ceil(W/cell)+1, ny=Math.ceil(H/cell)+1;
+    const g=new Float32Array(nx*ny);
+    for(let j=0;j<ny;j++) for(let i=0;i<nx;i++) g[j*nx+i]=sample(Math.min(W-1,i*cell), Math.min(H-1,j*cell));
+    ctx.strokeStyle=contourCol; ctx.lineWidth=Math.max(1,.9*dpr); ctx.lineJoin='round';
+    for(let n=0;n<9;n++){
+      const L = 3*sigma*Math.pow(Math.SQRT2*1.414, n);
+      ctx.globalAlpha = n===0 ? .55 : .85;
+      ctx.beginPath();
+      for(let j=0;j<ny-1;j++) for(let i=0;i<nx-1;i++){
+        const a=g[j*nx+i], b=g[j*nx+i+1], c=g[(j+1)*nx+i+1], d=g[(j+1)*nx+i];
+        const idx=(a>L?8:0)|(b>L?4:0)|(c>L?2:0)|(d>L?1:0);
+        if(idx===0||idx===15) continue;
+        const x0=i*cell, y0=j*cell;
+        const T=[x0+cell*(L-a)/(b-a), y0], R=[x0+cell, y0+cell*(L-b)/(c-b)], B=[x0+cell*(L-d)/(c-d), y0+cell], Lf=[x0, y0+cell*(L-a)/(d-a)];
+        const seg=(p,q)=>{ ctx.moveTo(p[0],p[1]); ctx.lineTo(q[0],q[1]); };
+        switch(idx){
+          case 1: case 14: seg(Lf,B); break;
+          case 2: case 13: seg(B,R); break;
+          case 3: case 12: seg(Lf,R); break;
+          case 4: case 11: seg(T,R); break;
+          case 5: seg(Lf,T); seg(B,R); break;
+          case 6: case 9: seg(T,B); break;
+          case 7: case 8: seg(Lf,T); break;
+          case 10: seg(T,R); seg(Lf,B); break;
+        }
+      }
+      ctx.stroke();
+    }
+    ctx.globalAlpha=1;
+
+    // overlays: beam, scale bar, labels
+    const pad = 14*dpr, fs = Math.round(10.5*dpr);
+    ctx.font = `${fs}px ${monoFont}`;
+    ctx.fillStyle='rgba(255,255,255,.88)'; ctx.strokeStyle='rgba(255,255,255,.88)';
+    // beam
+    ctx.save(); ctx.translate(pad+12*dpr, H-pad-12*dpr); ctx.rotate(-.5);
+    ctx.beginPath(); ctx.ellipse(0,0,10*dpr,6*dpr,0,0,Math.PI*2); ctx.globalAlpha=.35; ctx.fill(); ctx.globalAlpha=1; ctx.lineWidth=1*dpr; ctx.stroke(); ctx.restore();
+    // scale bar
+    const sbw = Math.round(Math.min(W*.16, 120*dpr));
+    const sx = W-pad-sbw, sy = H-pad-4*dpr;
+    ctx.lineWidth=2*dpr; ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(sx+sbw,sy); ctx.stroke();
+    ctx.textAlign='center'; ctx.textBaseline='bottom'; ctx.fillText('500 kpc', sx+sbw/2, sy-5*dpr);
+    // header labels
+    ctx.textAlign='left'; ctx.textBaseline='top';
+    ctx.fillText('LOFAR LBA · 54 MHz · synthetic', pad, pad);
+    ctx.textAlign='right';
+    ctx.fillText('σ = 1.0 mJy/beam', W-pad, pad);
+  }
+
+  let raf=0;
+  const redraw=()=>{ cancelAnimationFrame(raf); raf=requestAnimationFrame(draw); };
+  try{ new ResizeObserver(redraw).observe(canvas); }catch(e){ window.addEventListener('resize', redraw); }
+  try{ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redraw); }catch(e){}
+  try{ new MutationObserver(redraw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']}); }catch(e){}
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);
+  draw();
+
+  /* ---------- Publication filter ---------- */
+  const tabs = document.querySelectorAll('.tabs button');
+  const pubs = document.querySelectorAll('#publist .pub');
+  tabs.forEach(b=>b.addEventListener('click',()=>{
+    tabs.forEach(t=>t.setAttribute('aria-selected', String(t===b)));
+    const f=b.dataset.filter;
+    pubs.forEach(p=>{ p.hidden = !(f==='all' || p.dataset.kind===f); });
+  }));
+
+  /* ---------- Copy email ---------- */
+  const copyBtn=document.getElementById('copy'), email=document.getElementById('email');
+  copyBtn.addEventListener('click',()=>{
+    const txt=email.textContent.trim();
+    const done=()=>{ copyBtn.textContent='Copied'; setTimeout(()=>copyBtn.textContent='Copy address',1800); };
+    const fallback=()=>{ const r=document.createRange(); r.selectNodeContents(email); const s=getSelection(); s.removeAllRanges(); s.addRange(r); copyBtn.textContent='Selected, press ⌘C'; setTimeout(()=>copyBtn.textContent='Copy address',2400); };
+    try{ navigator.clipboard.writeText(txt).then(done, fallback); }catch(e){ fallback(); }
+  });
+
+  /* ---------- Active section in nav ---------- */
+  const links=[...document.querySelectorAll('.nav a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const setOn=id=>links.forEach(a=>a.classList.toggle('on', a.getAttribute('href')==='#'+id));
+  setOn('about');
+  try{
+    const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting) setOn(e.target.id); }); },{rootMargin:'-35% 0px -60% 0px'});
+    secs.forEach(s=>io.observe(s));
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
