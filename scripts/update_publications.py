@@ -183,6 +183,27 @@ def render_facts(data: dict) -> str:
     ])
 
 
+def sort_themes(page: str, data: dict) -> str:
+    """Order the research themes by the total citations of the papers listed in
+    each theme's data-bibcodes; a theme with data-pin="last" stays at the end."""
+    m = re.search(r"<!-- THEMES:START -->\n(.*?)\n<!-- THEMES:END -->", page, re.S)
+    if not m:
+        return page
+    cites = {p["bibcode"]: p["citations"] for p in data["refereed"]}
+    blocks = re.findall(r"      <article class=\"theme[^\"]*\".*?</article>", m.group(1), re.S)
+    scored = []
+    for i, block in enumerate(blocks):
+        bibs = re.search(r'data-bibcodes="([^"]*)"', block).group(1).split()
+        n = sum(cites.get(b, 0) for b in bibs)
+        block = re.sub(r'<span class="cites">[^<]*</span>',
+                       f'<span class="cites">{n} citation{"s" if n != 1 else ""}</span>', block, count=1)
+        pinned = 'data-pin="last"' in block
+        scored.append((pinned, -n, i, block))
+    scored.sort()
+    body = "\n".join(b for *_, b in scored)
+    return page[:m.start(1)] + body + page[m.end(1):]
+
+
 def replace_block(text: str, name: str, content: str) -> str:
     pattern = re.compile(rf"(<!-- {name}:START -->)(.*?)(\s*<!-- {name}:END -->)", re.S)
     if not pattern.search(text):
@@ -193,9 +214,12 @@ def replace_block(text: str, name: str, content: str) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--from-file", help="use a saved ADS JSON response instead of the API")
+    ap.add_argument("--from-data", action="store_true", help="re-render from data/publications.json")
     args = ap.parse_args()
 
-    if args.from_file:
+    if args.from_data:
+        docs = None
+    elif args.from_file:
         docs = json.loads(Path(args.from_file).read_text())["response"]["docs"]
     else:
         token = os.environ.get("ADS_API_TOKEN", "").strip()
@@ -203,13 +227,14 @@ def main() -> None:
             sys.exit("ADS_API_TOKEN is not set: add it as a repository secret.")
         docs = fetch_ads(token)
 
-    data = process(docs)
+    data = json.loads(DATA.read_text()) if args.from_data else process(docs)
     if not data["refereed"]:
         sys.exit("ADS returned no refereed papers; leaving the site unchanged.")
 
     page = INDEX.read_text(encoding="utf-8")
     page = replace_block(page, "PUBS", render_pubs(data))
     page = replace_block(page, "FACTS", render_facts(data))
+    page = sort_themes(page, data)
     page = replace_block(page, "UPDATED",
                          f'      <span>Publications updated from NASA ADS on {data["updated"]}</span>')
     INDEX.write_text(page, encoding="utf-8")
