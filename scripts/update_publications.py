@@ -34,7 +34,7 @@ INDEX = ROOT / "index.html"
 DATA = ROOT / "data" / "publications.json"
 SITEMAP = ROOT / "sitemap.xml"
 
-FIELDS = "bibcode,title,author,year,pub,citation_count,doi,identifier,doctype,property,pubdate"
+FIELDS = "bibcode,title,author,year,pub,citation_count,doi,identifier,doctype,property,pubdate,abstract"
 JOURNAL_NAMES = {
     "Astronomy and Astrophysics": "Astronomy & Astrophysics",
     "Monthly Notices of the Royal Astronomical Society": "Monthly Notices of the Royal Astronomical Society",
@@ -133,6 +133,7 @@ def process(docs: list[dict]) -> dict:
             "arxiv": arxiv_id(d.get("identifier") or []),
             "refereed": "REFEREED" in (d.get("property") or []),
             "doctype": d.get("doctype", ""),
+            "abstract": clean(d.get("abstract", "")),
         })
     refereed = [p for p in papers if p["refereed"]]
     refereed.sort(key=lambda p: (p["pubdate"], p["bibcode"]), reverse=True)
